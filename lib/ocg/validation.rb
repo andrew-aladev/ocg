@@ -4,14 +4,22 @@
 require_relative "error"
 
 class OCG
-  module Validation
-    def self.validate_options(options)
-      raise ValidateError, "invalid hash" unless options.is_a? ::Hash
+  OPERATORS = %i[add or mix].freeze
 
-      options.each do |key, value|
-        raise ValidateError, "invalid symbol" unless key.is_a? ::Symbol
-        raise ValidateError, "not convertable to array" unless value.respond_to? :to_a
+  module Validation
+    def self.validate_generator(generator)
+      return if generator.is_a? OCG
+
+      raise ValidateError, "invalid hash" unless generator.is_a? ::Hash
+
+      generator.each do |_key, value|
+        raise ValidateError, "value has no length" unless value.respond_to? :length
+        raise ValidateError, "value is not indexable" unless value.respond_to? :[]
       end
+    end
+
+    def self.validate_operator(operator)
+      raise ValidateError, "invalid operator" unless OPERATORS.include? operator
     end
   end
 end

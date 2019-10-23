@@ -4,22 +4,27 @@
 require_relative "validation"
 
 class OCG
-  def initialize(options)
-    Validation.validate_options options
+  def initialize(left_generator, operator = nil, right_generator = nil)
+    Validation.validate_generator left_generator
+    @left_generator = left_generator
 
-    @options = options
+    Validation.validate_operator operator unless operator.nil?
+    @operator = operator
+
+    Validation.validate_generator right_generator unless right_generator.nil?
+    @right_generator = right_generator
   end
 
-  def and(object)
-    @child_generator = get_generator object
+  def and(generator)
+    self.class.new self, :and, generator
   end
 
-  def or(object)
-    @child_generator = get_generator object
+  def or(generator)
+    self.class.new self, :or, generator
   end
 
-  def mix(object)
-    @child_generator = get_generator object
+  def mix(generator)
+    self.class.new self, :mix, generator
   end
 
   def next
@@ -29,11 +34,7 @@ class OCG
   end
 
   def length
-  end
-
-  private def get_generator(object)
-    return object if object.is_a? OCG
-
-    self.class.new object
+    if @left_generator
+    end
   end
 end
