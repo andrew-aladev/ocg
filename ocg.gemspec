@@ -16,14 +16,12 @@ GEMSPEC = Gem::Specification.new do |gem|
   gem.date     = Date.today.to_s
 
   gem.add_development_dependency "minitest", "~> 5.12"
-  gem.add_development_dependency "rake-compiler", "~> 1.0"
   gem.add_development_dependency "rubocop", "~> 0.75"
   gem.add_development_dependency "rubocop-performance", "~> 1.5"
   gem.add_development_dependency "rubocop-rails", "~> 2.3"
 
   gem.files = \
-    `git ls-files -z --directory {ext,lib}`.split("\x0") + \
+    `git ls-files -z --directory lib`.split("\x0") + \
     %w[AUTHORS LICENSE README.md]
   gem.require_paths = %w[lib]
-  gem.extensions    = %w[ext/extconf.rb]
 end

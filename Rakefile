@@ -1,16 +1,7 @@
-require "rake/extensiontask"
 require "rake/testtask"
 require "rubygems/package_task"
 
 load "ocg.gemspec"
-
-Rake::ExtensionTask.new do |ext|
-  ext.name           = "ocg"
-  ext.ext_dir        = "ext"
-  ext.lib_dir        = "lib"
-  ext.tmp_dir        = "tmp"
-  ext.source_pattern = "*.{c,h}"
-end
 
 Rake::TestTask.new do |task|
   task.libs << %w[lib]
@@ -19,6 +10,6 @@ Rake::TestTask.new do |task|
   task.test_files = pathes.split "\n"
 end
 
-task :default => %i[compile test]
+task :default => %i[test]
 
 Gem::PackageTask.new(GEMSPEC).define
