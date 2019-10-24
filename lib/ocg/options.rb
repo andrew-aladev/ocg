@@ -11,7 +11,8 @@ class OCG
 
       reset_value_indexes
 
-      @is_finished = false
+      @is_finished  = false
+      @last_options = nil
     end
 
     protected def reset_value_indexes
@@ -22,13 +23,14 @@ class OCG
       # If state is finished than all value indexes are already zero.
       reset_value_indexes unless @is_finished
 
-      @is_finished = false
+      @is_finished  = false
+      @last_options = nil
     end
 
     def next
       return nil if @is_finished
 
-      options = take
+      @last_options = Hash[@value_indexes.map { |name, value_index| [name, @options[name][value_index]] }]
 
       @is_finished = @options.keys.all? do |name|
         values          = @options[name]
@@ -44,11 +46,11 @@ class OCG
         true
       end
 
-      options
+      @last_options
     end
 
-    def take
-      Hash[@value_indexes.map { |name, value_index| [name, @options[name][value_index]] }]
+    def last
+      @last_options
     end
 
     def finished?

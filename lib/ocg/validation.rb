@@ -14,9 +14,5 @@ class OCG
         raise ValidateError, "option values are not indexable" unless values.respond_to? :[]
       end
     end
-
-    def self.validate_operator(operator)
-      raise ValidateError, "invalid operator" unless OCG::OPERATORS.include? operator
-    end
   end
 end

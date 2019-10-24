@@ -4,5 +4,6 @@
 class OCG
   class BaseError < ::StandardError; end
 
-  class ValidateError < BaseError; end
+  class NotImplementedError < BaseError; end
+  class ValidateError       < BaseError; end
 end
