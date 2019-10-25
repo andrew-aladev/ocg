@@ -1,0 +1,16 @@
+language: ruby
+rvm:
+  - 2.6
+
+os:
+  - linux
+  - osx
+
+dist: xenial
+osx_image: xcode10.2
+
+before_install:
+  - gem install bundler
+
+script:
+  - scripts/ci_test.sh

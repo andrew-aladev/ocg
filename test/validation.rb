@@ -16,7 +16,6 @@ class OCG
         :a,
         {},
         [],
-        ::STDOUT,
         NOOP_PROC
       ]
       .freeze

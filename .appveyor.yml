@@ -1,0 +1,10 @@
+image: Ubuntu1804
+
+environment:
+  matrix:
+    - RUBY_VERSION: 26
+
+test_script:
+  - sh: scripts/ci_test.sh
+
+build: off

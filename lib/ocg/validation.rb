@@ -10,8 +10,8 @@ class OCG
       raise ValidateError, "options should not be empty" if options.empty?
 
       options.each do |_name, values|
-        raise ValidateError, "option values should provide length" unless values.respond_to? :length
-        raise ValidateError, "option values are not indexable" unless values.respond_to? :[]
+        raise ValidateError, "option values should respond to \"to_a\"" unless values.respond_to? :to_a
+        raise ValidateError, "option values should not be empty" if values.to_a.empty?
       end
     end
   end
