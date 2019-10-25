@@ -9,6 +9,9 @@ class OCG
       Validation.validate_options options
       @options = options
 
+      # End to start is more traditional way of making combinations.
+      @keys = options.keys.reverse
+
       reset_value_indexes
 
       @is_finished  = false
@@ -25,6 +28,8 @@ class OCG
 
       @is_finished  = false
       @last_options = nil
+
+      nil
     end
 
     def next
@@ -32,7 +37,7 @@ class OCG
 
       @last_options = Hash[@value_indexes.map { |name, value_index| [name, @options[name][value_index]] }]
 
-      @is_finished = @options.keys.all? do |name|
+      @is_finished = @keys.all? do |name|
         values          = @options[name]
         new_value_index = @value_indexes[name] + 1
 

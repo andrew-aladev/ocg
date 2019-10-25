@@ -5,7 +5,7 @@ require_relative "../error"
 
 class OCG
   module Operator
-    class Abstract
+    class Abstract < OCG
       def initialize(left_generator, right_generator)
         @left_generator  = OCG.prepare_generator left_generator
         @right_generator = OCG.prepare_generator right_generator
