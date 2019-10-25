@@ -27,12 +27,12 @@ class OCG
     Operator::AND.new self, generator
   end
 
-  def or(generator)
-    Operator::OR.new self, generator
-  end
-
   def mix(generator)
     Operator::MIX.new self, generator
+  end
+
+  def or(generator)
+    Operator::OR.new self, generator
   end
 end
 

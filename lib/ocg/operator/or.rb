@@ -20,10 +20,10 @@ class OCG
         left_last  = @left_generator.last
         right_last = @right_generator.last
 
-        if @left_generator.finished? && !right_last.nil?
-          right_last
-        else
+        if right_last.nil?
           left_last
+        else
+          right_last
         end
       end
 
