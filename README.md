@@ -1,5 +1,10 @@
 # Option combination generator
 
+[![Travis test status](https://travis-ci.org/andrew-aladev/ocg.svg?branch=master)](https://travis-ci.org/andrew-aladev/ocg)
+[![AppVeyor test status](https://ci.appveyor.com/api/projects/status/github/andrew-aladev/ocg?branch=master&svg=true)](https://ci.appveyor.com/project/andrew-aladev/ocg/branch/master)
+[![Cirrus test status](https://api.cirrus-ci.com/github/andrew-aladev/ocg.svg?branch=master)](https://cirrus-ci.com/github/andrew-aladev/ocg)
+[![Circle test status](https://circleci.com/gh/andrew-aladev/ocg/tree/master.svg?style=shield)](https://circleci.com/gh/andrew-aladev/ocg/tree/master)
+
 WIP
 
 ## Why?
@@ -73,6 +78,12 @@ complete_generator = almost_complete_generator.mix(
   :overlapLog => 0..9
 )
 ```
+
+## CI
+
+Travis and Appveyor CI uses [scripts/toolchains.sh](scripts/toolchains.sh) directly.
+Cirrus and Circle CI uses prebuilt [scripts/test-images](scripts/test-images).
+Cirrus CI uses amd64 image, Circle CI - i686.
 
 ## License
 
