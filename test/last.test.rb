@@ -1,29 +1,25 @@
 # Option combination generator.
 # Copyright (c) 2019 AUTHORS, MIT License.
 
-require "ocg"
-
 require_relative "common"
 require_relative "minitest"
 
 class OCG
   module Test
     class Last < Minitest::Unit::TestCase
-      def test_last
+      def test_basic
         generator, combinations = Test.get_data
         assert generator.last.nil?
 
-        index = 0
-        until generator.finished?
-          assert_equal generator.next, combinations[index]
-          assert_equal generator.last, combinations[index]
-          index += 1
+        combinations.each do |combination|
+          assert_equal generator.next, combination
+          assert_equal generator.last, combination
         end
 
         assert_equal generator.last, combinations.last
       end
 
-      def test_last_after_reset
+      def test_after_reset
         generator, combinations = Test.get_data
         assert generator.last.nil?
 
@@ -32,11 +28,9 @@ class OCG
 
         generator.reset
 
-        index = 0
-        until generator.finished?
-          assert_equal generator.next, combinations[index]
-          assert_equal generator.last, combinations[index]
-          index += 1
+        combinations.each do |combination|
+          assert_equal generator.next, combination
+          assert_equal generator.last, combination
         end
 
         assert_equal generator.last, combinations.last

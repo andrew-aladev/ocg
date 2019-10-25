@@ -1,7 +1,7 @@
 # Option combination generator.
 # Copyright (c) 2019 AUTHORS, MIT License.
 
-module OCG
+class OCG
   module Test
     module Validation
       NOOP_PROC = proc {}
