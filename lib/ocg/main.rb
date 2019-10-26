@@ -11,28 +11,28 @@ class OCG
 
   DELEGATORS = %i[reset next last started? finished? length].freeze
 
-  def initialize(generator)
-    @generator = self.class.prepare_generator generator
+  def initialize(generator_or_options)
+    @generator = self.class.prepare_generator generator_or_options
   end
 
-  def self.prepare_generator(generator)
-    return generator if generator.is_a? OCG
+  def self.prepare_generator(generator_or_options)
+    return generator_or_options if generator_or_options.is_a? OCG
 
-    Options.new generator
+    Options.new generator_or_options
   end
 
   def_delegators :@generator, *DELEGATORS
 
-  def and(generator)
-    Operator::AND.new self, generator
+  def and(generator_or_options)
+    Operator::AND.new self, generator_or_options
   end
 
-  def mix(generator)
-    Operator::MIX.new self, generator
+  def mix(generator_or_options)
+    Operator::MIX.new self, generator_or_options
   end
 
-  def or(generator)
-    Operator::OR.new self, generator
+  def or(generator_or_options)
+    Operator::OR.new self, generator_or_options
   end
 end
 

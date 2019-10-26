@@ -5,7 +5,79 @@
 [![Cirrus test status](https://api.cirrus-ci.com/github/andrew-aladev/ocg.svg?branch=master)](https://cirrus-ci.com/github/andrew-aladev/ocg)
 [![Circle test status](https://circleci.com/gh/andrew-aladev/ocg/tree/master.svg?style=shield)](https://circleci.com/gh/andrew-aladev/ocg/tree/master)
 
-WIP
+## Installation
+
+```sh
+gem install ocg
+```
+
+You can build it from source.
+
+```sh
+rake gem
+gem install pkg/ocg-*.gem
+```
+
+## Usage
+
+```ruby
+require "ocg"
+
+generator = OCG.new(
+  :a => %w[a b],
+  :b => (1..2)
+)
+.or(
+  :c => %i[c d],
+  :d => (3..4)
+)
+.and(
+  :e => %w[e f],
+  :f => (5..6)
+)
+.mix(
+  :g => %i[g h],
+  :h => (7..8)
+)
+
+until generator.finished?
+  pp generator.next
+end
+```
+
+It will populate all option combinations.
+
+## Docs
+
+Options should be prepared in the following form:
+
+```ruby
+{
+  option_name => option_values,
+  ...
+}
+```
+
+Options hash should not be empty.
+`option_name` can be any valid hash key.
+`option_values` should be convertable to array using `to_a`.
+`option_values` should not be empty.
+
+`OCG.new options` will prepare a generator.
+It will provide all possible option combinations.
+
+You can combine generators using `and`, `mix` and `or`.
+
+`and` will provide all combinations between generators.
+`mix` will merge right generator combinations into left without combining.
+`or` will concat generator combinations without merging.
+
+`reset` method allows to receive combinations once again.
+`next` method returns next combination.
+`last` method returns last combination.
+`started?` method returns true when at least one combination was generated.
+`finished?` method returns true when all combination were generated.
+`length` returns combinations length.
 
 ## Why?
 

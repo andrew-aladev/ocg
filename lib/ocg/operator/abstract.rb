@@ -6,9 +6,9 @@ require_relative "../error"
 class OCG
   module Operator
     class Abstract < OCG
-      def initialize(left_generator, right_generator)
-        @left_generator  = OCG.prepare_generator left_generator
-        @right_generator = OCG.prepare_generator right_generator
+      def initialize(left_generator_or_options, right_generator_or_options)
+        @left_generator  = OCG.prepare_generator left_generator_or_options
+        @right_generator = OCG.prepare_generator right_generator_or_options
 
         reset
       end
@@ -26,6 +26,10 @@ class OCG
 
       def last
         raise NotImplementedError, "\"last\" is not implemented"
+      end
+
+      def started?
+        raise NotImplementedError, "\"started?\" is not implemented"
       end
 
       def finished?

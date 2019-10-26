@@ -9,7 +9,8 @@ class OCG
       generator = OCG.new(
         :a => %w[a b],
         :b => (1..2)
-      ).or(
+      )
+      .or(
         :c => %i[c d],
         :d => (3..4)
       )
