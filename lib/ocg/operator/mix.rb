@@ -6,9 +6,21 @@ require_relative "abstract"
 class OCG
   module Operator
     class MIX < Abstract
+      def initialize(*args)
+        super
+
+        @main_generator = \
+          if @right_generator.length > @left_generator.length
+            @right_generator
+          else
+            @left_generator
+          end
+      end
+
       def next
         return nil if finished?
 
+        @left_generator.reset if @left_generator.finished?
         @right_generator.reset if @right_generator.finished?
         @left_generator.next.merge @right_generator.next
       end
@@ -23,15 +35,15 @@ class OCG
       end
 
       def started?
-        @left_generator.started?
+        @main_generator.started?
       end
 
       def finished?
-        @left_generator.finished?
+        @main_generator.finished?
       end
 
       def length
-        @left_generator.length
+        @main_generator.length
       end
     end
   end

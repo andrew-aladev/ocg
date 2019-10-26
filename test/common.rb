@@ -8,19 +8,19 @@ class OCG
     def self.get_data
       generator = OCG.new(
         :a => %w[a b],
-        :b => (1..2)
+        :b => 1..2
       )
       .or(
         :c => %i[c d],
-        :d => (3..4)
+        :d => 3..4
       )
       .and(
         :e => %w[e f],
-        :f => (5..6)
+        :f => 5..6
       )
       .mix(
         :g => %i[g h],
-        :h => (7..8)
+        :h => 7..8
       )
 
       main_combinations = [

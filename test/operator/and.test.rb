@@ -11,7 +11,7 @@ class OCG
     module Operator
       class AND < Minitest::Unit::TestCase
         def test_invalid
-          generator = OCG.new :a => (1..2)
+          generator = OCG.new :a => 1..2
 
           (Validation::INVALID_HASHES + [{}]).each do |invalid_options|
             assert_raises ValidateError do
@@ -27,7 +27,7 @@ class OCG
         end
 
         def test_basic
-          generator = OCG.new(:a => (1..2)).and :b => (3..4)
+          generator = OCG.new(:a => 1..2).and :b => 3..4
 
           assert_equal generator.next, :a => 1, :b => 3
           assert_equal generator.next, :a => 1, :b => 4
@@ -37,11 +37,11 @@ class OCG
         end
 
         def test_after_started
-          generator = OCG.new :a => (1..2)
+          generator = OCG.new :a => 1..2
           assert_equal generator.next, :a => 1
           assert generator.started?
 
-          generator = generator.and :b => (3..4)
+          generator = generator.and :b => 3..4
           refute generator.started?
 
           assert_equal generator.next, :a => 1, :b => 3

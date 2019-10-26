@@ -24,7 +24,7 @@ class OCG
       end
 
       def test_basic
-        generator = OCG.new :a => (1..2)
+        generator = OCG.new :a => 1..2
 
         assert_equal generator.next, :a => 1
         assert_equal generator.next, :a => 2

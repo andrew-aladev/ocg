@@ -25,19 +25,19 @@ require "ocg"
 
 generator = OCG.new(
   :a => %w[a b],
-  :b => (1..2)
+  :b => 1..2
 )
 .or(
   :c => %i[c d],
-  :d => (3..4)
+  :d => 3..4
 )
 .and(
   :e => %w[e f],
-  :f => (5..6)
+  :f => 5..6
 )
 .mix(
   :g => %i[g h],
-  :h => (7..8)
+  :h => 7..8
 )
 
 until generator.finished?
@@ -69,7 +69,7 @@ It will provide all possible option combinations.
 You can combine generators using `and`, `mix` and `or`.
 
 `and` method will provide all combinations between generators.
-`mix` method will merge right generator combinations into left without combining.
+`mix` method will merge right generator combinations into left without combining. `mix` guarantees that both left and right generator combinations will be provided at least once.
 `or` method will concat generator combinations without merging.
 
 `reset` method allows to receive combinations once again.
@@ -115,7 +115,7 @@ ldm_generator = OCG.new(
   :enableLongDistanceMatching => [false]
 )
 .or(
-  :enableLongDistanceMatching => [true]
+  :enableLongDistanceMatching => [true],
   :ldmHashLog => 0..10,
   :ldmMinMatch => 0..10,
   ...
