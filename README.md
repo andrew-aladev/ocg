@@ -68,15 +68,22 @@ It will provide all possible option combinations.
 
 You can combine generators using `and`, `mix` and `or`.
 
-`and` will provide all combinations between generators.
-`mix` will merge right generator combinations into left without combining.
-`or` will concat generator combinations without merging.
+`and` method will provide all combinations between generators.
+
+`mix` method will merge right generator combinations into left without combining.
+
+`or` method will concat generator combinations without merging.
 
 `reset` method allows to receive combinations once again.
+
 `next` method returns next combination.
+
 `last` method returns last combination.
+
 `started?` method returns true when at least one combination was generated.
+
 `finished?` method returns true when all combination were generated.
+
 `length` returns combinations length.
 
 ## Why?
