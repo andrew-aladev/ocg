@@ -12,10 +12,11 @@ class OCG
       # End to start is more traditional way of making combinations.
       @keys = @options.keys.reverse
 
+      @last_options = nil
+
       reset_value_indexes
 
-      @is_finished  = false
-      @last_options = nil
+      @is_finished = false
     end
 
     protected def reset_value_indexes
@@ -23,11 +24,14 @@ class OCG
     end
 
     def reset
+      return nil unless started?
+
+      @last_options = nil
+
       # If state is finished than all value indexes are already zero.
       reset_value_indexes unless @is_finished
 
-      @is_finished  = false
-      @last_options = nil
+      @is_finished = false
 
       nil
     end
@@ -56,6 +60,10 @@ class OCG
 
     def last
       @last_options
+    end
+
+    def started?
+      !@last_options.nil?
     end
 
     def finished?

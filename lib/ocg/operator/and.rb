@@ -28,6 +28,10 @@ class OCG
         left_last.merge right_last
       end
 
+      def started?
+        @left_generator.started? || @right_generator.started?
+      end
+
       def finished?
         @left_generator.finished? && @right_generator.finished?
       end

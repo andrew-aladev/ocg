@@ -25,6 +25,7 @@ class OCG
 
       def test_basic
         generator = OCG.new :a => (1..2)
+
         assert_equal generator.next, :a => 1
         assert_equal generator.next, :a => 2
         assert generator.next.nil?

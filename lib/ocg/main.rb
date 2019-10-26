@@ -9,7 +9,7 @@ require_relative "options"
 class OCG
   extend ::Forwardable
 
-  DELEGATORS = %i[reset next last finished? length].freeze
+  DELEGATORS = %i[reset next last started? finished? length].freeze
 
   def initialize(generator)
     @generator = self.class.prepare_generator generator
