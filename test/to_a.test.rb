@@ -6,39 +6,40 @@ require_relative "minitest"
 
 class OCG
   module Test
-    class Last < Minitest::Unit::TestCase
+    class ToArray < Minitest::Unit::TestCase
       def test_basic
         Test.get_datas do |generator, combinations|
-          assert generator.last.nil?
-
-          combinations.each do |combination|
-            assert_equal generator.next, combination
-            assert_equal generator.last, combination
-          end
-
-          assert_equal generator.last, combinations.last
+          assert_equal generator.to_a, combinations
         end
       end
 
-      def test_after_reset
+      def test_after_started
         Test.get_datas do |generator, combinations|
-          assert generator.last.nil?
-
           assert_equal generator.next, combinations[0]
-          assert_equal generator.last, combinations[0]
 
-          generator.reset
+          assert_equal generator.to_a, combinations
 
           combinations.each do |combination|
             assert_equal generator.next, combination
-            assert_equal generator.last, combination
+          end
+        end
+      end
+
+      def test_after_finished
+        Test.get_datas do |generator, combinations|
+          combinations.each do |combination|
+            assert_equal generator.next, combination
           end
 
-          assert_equal generator.last, combinations.last
+          assert_equal generator.to_a, combinations
+
+          combinations.each do |combination|
+            assert_equal generator.next, combination
+          end
         end
       end
     end
 
-    Minitest << Last
+    Minitest << ToArray
   end
 end

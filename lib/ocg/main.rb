@@ -34,6 +34,17 @@ class OCG
   def or(generator_or_options)
     Operator::OR.new self, generator_or_options
   end
+
+  def to_a
+    reset
+
+    result = []
+    result << send("next") until finished?
+
+    reset
+
+    result
+  end
 end
 
 require_relative "operator/and"

@@ -41,7 +41,7 @@ generator = OCG.new(
 )
 
 until generator.finished?
-  pp generator.next
+  puts generator.next
 end
 ```
 
@@ -83,6 +83,8 @@ You can combine generators using `and`, `mix` and `or`.
 `finished?` method returns true when all combination were generated.
 
 `length` returns combinations length.
+
+`to_a` returns combinations array.
 
 ## Why?
 

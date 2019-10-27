@@ -8,26 +8,27 @@ class OCG
   module Test
     class Next < Minitest::Unit::TestCase
       def test_basic
-        generator, combinations = Test.get_data
+        Test.get_datas do |generator, combinations|
+          combinations.each do |combination|
+            assert_equal generator.next, combination
+          end
 
-        combinations.each do |combination|
-          assert_equal generator.next, combination
+          assert generator.next.nil?
         end
-
-        assert generator.next.nil?
       end
 
       def test_after_reset
-        generator, combinations = Test.get_data
-        assert_equal generator.next, combinations[0]
+        Test.get_datas do |generator, combinations|
+          assert_equal generator.next, combinations[0]
 
-        generator.reset
+          generator.reset
 
-        combinations.each do |combination|
-          assert_equal generator.next, combination
+          combinations.each do |combination|
+            assert_equal generator.next, combination
+          end
+
+          assert generator.next.nil?
         end
-
-        assert generator.next.nil?
       end
     end
 

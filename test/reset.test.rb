@@ -8,35 +8,38 @@ class OCG
   module Test
     class Reset < Minitest::Unit::TestCase
       def test_before_started
-        generator, combinations = Test.get_data
-        assert generator.last.nil?
+        Test.get_datas do |generator, combinations|
+          assert generator.last.nil?
 
-        generator.reset
-        assert generator.last.nil?
-        assert_equal generator.next, combinations[0]
+          generator.reset
+          assert generator.last.nil?
+          assert_equal generator.next, combinations[0]
+        end
       end
 
       def test_before_finished
-        generator, combinations = Test.get_data
-        assert generator.last.nil?
-        assert_equal generator.next, combinations[0]
+        Test.get_datas do |generator, combinations|
+          assert generator.last.nil?
+          assert_equal generator.next, combinations[0]
 
-        generator.reset
-        assert generator.last.nil?
-        assert_equal generator.next, combinations[0]
+          generator.reset
+          assert generator.last.nil?
+          assert_equal generator.next, combinations[0]
+        end
       end
 
       def test_after_finished
-        generator, combinations = Test.get_data
-        assert generator.last.nil?
+        Test.get_datas do |generator, combinations|
+          assert generator.last.nil?
 
-        combinations.each do |combination|
-          assert_equal generator.next, combination
+          combinations.each do |combination|
+            assert_equal generator.next, combination
+          end
+
+          generator.reset
+          assert generator.last.nil?
+          assert_equal generator.next, combinations[0]
         end
-
-        generator.reset
-        assert generator.last.nil?
-        assert_equal generator.next, combinations[0]
       end
     end
 
