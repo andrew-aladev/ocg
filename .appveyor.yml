@@ -1,3 +1,5 @@
+image: Ubuntu
+
 environment:
   matrix:
     - RUBY_VERSION: 26
