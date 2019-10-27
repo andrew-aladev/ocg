@@ -1,5 +1,3 @@
-image: Ubuntu1804
-
 environment:
   matrix:
     - RUBY_VERSION: 26

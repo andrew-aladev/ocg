@@ -69,7 +69,7 @@ It will provide all possible option combinations.
 You can combine generators using `and`, `mix` and `or`.
 
 `and` method will provide all combinations between generators.
-`mix` method will merge right generator combinations into left without combining. `mix` guarantees that both left and right generator combinations will be provided at least once.
+`mix` method will merge combinations without combining. `mix` guarantees that both left and right generator combinations will be provided at least once.
 `or` method will concat generator combinations without merging.
 
 `reset` method allows to receive combinations once again.
