@@ -9,7 +9,7 @@ class OCG
       def initialize(*args)
         super
 
-        @main_generator = \
+        @main_generator =
           if @right_generator.length > @left_generator.length
             @right_generator
           else
