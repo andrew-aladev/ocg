@@ -104,7 +104,7 @@ general_generator = OCG.new(
 )
 .or(
   :windowLog => 0..10,
-  :hashLog => 0..10,
+  :hashLog   => 0..10,
   ...
 )
 ```
@@ -118,8 +118,8 @@ ldm_generator = OCG.new(
 )
 .or(
   :enableLongDistanceMatching => [true],
-  :ldmHashLog => 0..10,
-  :ldmMinMatch => 0..10,
+  :ldmHashLog                 => 0..10,
+  :ldmMinMatch                => 0..10,
   ...
 )
 ```
@@ -132,29 +132,30 @@ main_generator = general_generator.and ldm_generator
 ```
 
 `contentSizeFlag`, `checksumFlag`, `dictIDFlag` options are additional options.
-These options don't correlate between each other or with main options.
-We want just to mix their values with main options.
+These options may correlate between each other but don't correlate with main options.
 
 ```ruby
 almost_complete_generator = main_generator.mix(
-  :contentSizeFlag => [true, false]
-)
-.mix(
-  :checksumFlag => [true, false]
-)
-.mix(
-  :dictIDFlag => [true, false]
+  :contentSizeFlag => [true, false],
+  :checksumFlag    => [true, false],
+  :dictIDFlag      => [true, false]
 )
 ```
 
 `nbWorkers`, `jobSize` and `overlapLog` options are thread related options.
+When `nbWorkers` equals `0`, `jobSize` and `overlapLog` should not be used.
 These options correlate between each other but don't correlate with main options.
 
 ```ruby
 complete_generator = almost_complete_generator.mix(
-  :nbWorkers => 0..2,
-  :jobSize => 1..10,
-  :overlapLog => 0..9
+  OCG.new(
+    :nbWorkers => [0]
+  )
+  .or(
+    :nbWorkers  => 1..2,
+    :jobSize    => 1..10,
+    :overlapLog => 0..9
+  )
 )
 ```
 
