@@ -40,9 +40,7 @@ generator = OCG.new(
   :h => 7..8
 )
 
-until generator.finished?
-  puts generator.next
-end
+puts generator.next until generator.finished?
 ```
 
 It will populate all option combinations.
@@ -91,6 +89,7 @@ You can combine generators using `and`, `mix` and `or`.
 Many software uses multiple options and have complex relations between them.
 We want to test this software.
 We need to provide optimal option combination to maximize test coverage.
+The amount of combinations can be more than billion, it is not possible to store them (fuzzing testing).
 
 Let's look at [zstd compressor options](http://facebook.github.io/zstd/zstd_manual.html#Chapter5).
 
