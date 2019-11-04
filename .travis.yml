@@ -7,6 +7,7 @@ os:
   - osx
 
 dist: bionic
+osx_image: xcode11.2
 
 arch:
   - amd64
