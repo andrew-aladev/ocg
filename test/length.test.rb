@@ -6,7 +6,7 @@ require_relative "minitest"
 
 class OCG
   module Test
-    class Length < Minitest::Unit::TestCase
+    class Length < Minitest::Test
       def test_length
         Test.get_datas do |generator, combinations|
           assert_equal generator.length, combinations.length

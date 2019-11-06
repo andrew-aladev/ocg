@@ -6,7 +6,7 @@ require_relative "minitest"
 
 class OCG
   module Test
-    class Finished < Minitest::Unit::TestCase
+    class Finished < Minitest::Test
       def test_basic
         Test.get_datas do |generator, combinations|
           refute generator.finished?

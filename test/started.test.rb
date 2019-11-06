@@ -6,7 +6,7 @@ require_relative "minitest"
 
 class OCG
   module Test
-    class Started < Minitest::Unit::TestCase
+    class Started < Minitest::Test
       def test_basic
         Test.get_datas do |generator, combinations|
           refute generator.started?

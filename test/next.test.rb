@@ -6,7 +6,7 @@ require_relative "minitest"
 
 class OCG
   module Test
-    class Next < Minitest::Unit::TestCase
+    class Next < Minitest::Test
       def test_basic
         Test.get_datas do |generator, combinations|
           combinations.each do |combination|

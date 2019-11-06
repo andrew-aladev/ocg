@@ -9,7 +9,7 @@ require_relative "../validation"
 class OCG
   module Test
     module Operator
-      class MIX < Minitest::Unit::TestCase
+      class MIX < Minitest::Test
         def test_invalid
           generator = OCG.new :a => 1..2
 

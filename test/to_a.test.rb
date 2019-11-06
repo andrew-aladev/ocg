@@ -6,7 +6,7 @@ require_relative "minitest"
 
 class OCG
   module Test
-    class ToArray < Minitest::Unit::TestCase
+    class ToArray < Minitest::Test
       def test_basic
         Test.get_datas do |generator, combinations|
           assert_equal generator.to_a, combinations

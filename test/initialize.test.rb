@@ -8,7 +8,7 @@ require_relative "validation"
 
 class OCG
   module Test
-    class Initialize < Minitest::Unit::TestCase
+    class Initialize < Minitest::Test
       def test_invalid
         (Validation::INVALID_HASHES + [{}]).each do |invalid_options|
           assert_raises ValidateError do

@@ -6,7 +6,7 @@ require_relative "minitest"
 
 class OCG
   module Test
-    class Last < Minitest::Unit::TestCase
+    class Last < Minitest::Test
       def test_basic
         Test.get_datas do |generator, combinations|
           assert generator.last.nil?

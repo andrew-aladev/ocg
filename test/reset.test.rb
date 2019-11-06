@@ -6,7 +6,7 @@ require_relative "minitest"
 
 class OCG
   module Test
-    class Reset < Minitest::Unit::TestCase
+    class Reset < Minitest::Test
       def test_before_started
         Test.get_datas do |generator, combinations|
           assert generator.last.nil?
