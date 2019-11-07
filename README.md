@@ -1,9 +1,8 @@
 # Option combination generator
 
-[![Travis test status](https://travis-ci.com/andrew-aladev/ocg.svg?branch=master)](https://travis-ci.com/andrew-aladev/ocg)
-[![AppVeyor test status](https://ci.appveyor.com/api/projects/status/github/andrew-aladev/ocg?branch=master&svg=true)](https://ci.appveyor.com/project/andrew-aladev/ocg/branch/master)
-[![Cirrus test status](https://api.cirrus-ci.com/github/andrew-aladev/ocg.svg?branch=master)](https://cirrus-ci.com/github/andrew-aladev/ocg)
-[![Circle test status](https://circleci.com/gh/andrew-aladev/ocg/tree/master.svg?style=shield)](https://circleci.com/gh/andrew-aladev/ocg/tree/master)
+| Travis | AppVeyor | Cirrus | Circle |
+| :---:  | :---:    | :---:  | :---:  |
+| [![Travis test status](https://travis-ci.com/andrew-aladev/ocg.svg?branch=master)](https://travis-ci.com/andrew-aladev/ocg) | [![AppVeyor test status](https://ci.appveyor.com/api/projects/status/github/andrew-aladev/ocg?branch=master&svg=true)](https://ci.appveyor.com/project/andrew-aladev/ocg/branch/master) | [![Cirrus test status](https://api.cirrus-ci.com/github/andrew-aladev/ocg.svg?branch=master)](https://cirrus-ci.com/github/andrew-aladev/ocg) | [![Circle test status](https://circleci.com/gh/andrew-aladev/ocg/tree/master.svg?style=shield)](https://circleci.com/gh/andrew-aladev/ocg/tree/master) |
 
 ## Installation
 
