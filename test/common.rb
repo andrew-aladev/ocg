@@ -3,8 +3,6 @@
 
 require "ocg"
 
-require_relative "helper"
-
 class OCG
   module Test
     def self.get_data
