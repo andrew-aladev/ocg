@@ -3,6 +3,7 @@
 
 require "ocg"
 
+require_relative "common"
 require_relative "minitest"
 require_relative "validation"
 
