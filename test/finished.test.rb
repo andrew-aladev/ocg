@@ -1,7 +1,6 @@
 # Option combination generator.
 # Copyright (c) 2019 AUTHORS, MIT License.
 
-require_relative "helper"
 require_relative "common"
 require_relative "minitest"
 
