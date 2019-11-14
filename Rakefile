@@ -6,7 +6,7 @@ load "ocg.gemspec"
 Rake::TestTask.new do |task|
   task.libs << %w[lib]
 
-  pathes = `find test | grep "\.test\.rb$"`
+  pathes          = `find test | grep "\.test\.rb$"`
   task.test_files = pathes.split "\n"
 end
 

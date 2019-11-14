@@ -20,6 +20,7 @@ class OCG
         nil
       end
 
+      # :nocov:
       def next
         raise NotImplementedError, "\"next\" is not implemented"
       end
@@ -39,6 +40,7 @@ class OCG
       def length
         raise NotImplementedError, "\"length\" is not implemented"
       end
+      # :nocov:
     end
   end
 end
