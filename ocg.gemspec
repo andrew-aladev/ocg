@@ -15,11 +15,13 @@ GEMSPEC = Gem::Specification.new do |gem|
   gem.version  = OCG::VERSION
   gem.date     = Date.today.to_s
 
+  gem.add_development_dependency "codecov"
   gem.add_development_dependency "minitest", "~> 5.12"
   gem.add_development_dependency "rake"
   gem.add_development_dependency "rubocop", "~> 0.75"
   gem.add_development_dependency "rubocop-performance", "~> 1.5"
   gem.add_development_dependency "rubocop-rails", "~> 2.3"
+  gem.add_development_dependency "simplecov"
 
   gem.files = \
     `git ls-files -z --directory lib`.split("\x0") + \
