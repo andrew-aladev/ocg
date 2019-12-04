@@ -1,16 +1,18 @@
 # Option combination generator.
 # Copyright (c) 2019 AUTHORS, MIT License.
 
-require "codecov"
-require "simplecov"
+if ENV["CI"] || ENV["COVERAGE"]
+  require "codecov"
+  require "simplecov"
 
-SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new(
-  [
-    SimpleCov::Formatter::HTMLFormatter,
-    SimpleCov::Formatter::Codecov
-  ]
-)
+  SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new(
+    [
+      SimpleCov::Formatter::HTMLFormatter,
+      SimpleCov::Formatter::Codecov
+    ]
+  )
 
-SimpleCov.start do
-  add_filter %r{^/test/}
+  SimpleCov.start do
+    add_filter %r{^/test/}
+  end
 end
