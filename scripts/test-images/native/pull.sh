@@ -4,4 +4,5 @@ set -e
 DIR=$(dirname "${BASH_SOURCE[0]}")
 cd "$DIR"
 
-./native/build.sh
+./amd64-pc-linux-gnu/pull.sh
+./i686-pc-linux-gnu/pull.sh
