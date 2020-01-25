@@ -160,7 +160,7 @@ complete_generator = almost_complete_generator.mix(
 ## CI
 
 See universal test script [scripts/ci_test.sh](scripts/ci_test.sh) for CI.
-Please visit [scripts/test_images](scripts/test_images).
+Please visit [scripts/test-images](scripts/test-images).
 You can run this test script using many native and cross images.
 
 Cirrus and Circle CI uses prebuilt [scripts/test-images](scripts/test-images).
