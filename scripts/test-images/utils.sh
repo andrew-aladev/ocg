@@ -55,3 +55,8 @@ docker_pull () {
   buildah pull "$docker_image_name"
   buildah tag "$docker_image_name" "$image_name"
 }
+
+run_image () {
+  echo "-- running image $IMAGE_NAME --"
+  buildah run $(buildah from "$IMAGE_NAME") "/home/entrypoint.sh"
+}

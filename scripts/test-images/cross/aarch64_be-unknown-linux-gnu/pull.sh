@@ -4,5 +4,7 @@ set -e
 DIR=$(dirname "${BASH_SOURCE[0]}")
 cd "$DIR"
 
-./native/run.sh
-./cross/run.sh
+source "../../utils.sh"
+source "./env.sh"
+
+docker_pull

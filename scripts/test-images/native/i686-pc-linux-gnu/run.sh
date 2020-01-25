@@ -4,7 +4,7 @@ set -e
 DIR=$(dirname "${BASH_SOURCE[0]}")
 cd "$DIR"
 
+source "../../utils.sh"
 source "./env.sh"
 
-echo "-- running image $IMAGE_NAME --"
-buildah run $(buildah from "$IMAGE_NAME") /home/entrypoint.sh
+run_image
