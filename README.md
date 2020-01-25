@@ -163,7 +163,6 @@ See universal test script [scripts/ci_test.sh](scripts/ci_test.sh) for CI.
 Please visit [scripts/test-images](scripts/test-images).
 You can run this test script using many native and cross images.
 
-Cirrus and Circle CI uses prebuilt [scripts/test-images](scripts/test-images).
 Cirrus CI uses x86_64 glibc image, Circle CI - x86_64 musl.
 
 ## License
