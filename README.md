@@ -159,7 +159,7 @@ complete_generator = almost_complete_generator.mix(
 
 ## CI
 
-Travis and Appveyor CI uses [scripts/toolchains.sh](scripts/toolchains.sh) directly.
+Travis and Appveyor CI uses [scripts/ci_test.sh](scripts/ci_test.sh) directly.
 Cirrus and Circle CI uses prebuilt [scripts/test-images](scripts/test-images).
 Cirrus CI uses x86_64 glibc image, Circle CI - x86_64 musl.
 
