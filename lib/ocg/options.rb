@@ -7,7 +7,7 @@ class OCG
   class Options
     def initialize(options)
       Validation.validate_options options
-      @options = Hash[options.map { |name, values| [name, values.to_a] }]
+      @options = options.transform_values(&:to_a)
 
       # End to start is more traditional way of making combinations.
       @keys = @options.keys.reverse
@@ -20,7 +20,7 @@ class OCG
     end
 
     protected def reset_value_indexes
-      @value_indexes = Hash[@options.map { |name, _values| [name, 0] }]
+      @value_indexes = @options.transform_values { |_values| 0 }
     end
 
     def reset
