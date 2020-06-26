@@ -12,7 +12,8 @@ rake gem
 
 # Packing source.
 
-NAME="ocg"
+VERSION=$(grep "VERSION" "lib/ocg/version.rb" | sed "s/.*VERSION\s*=\s*['\"]\([0-9.]*\).*/\1/g")
+NAME="ocg-${VERSION}"
 
 COMPRESSION_LEVEL="-9"
 TAR_COMMANDS=(
