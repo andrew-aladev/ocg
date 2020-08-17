@@ -6,7 +6,7 @@ require_relative "../error"
 class OCG
   module Operator
     class Abstract < OCG
-      def initialize(left_generator_or_options, right_generator_or_options)
+      def initialize(left_generator_or_options, right_generator_or_options) # rubocop:disable Lint/MissingSuper
         @left_generator  = OCG.prepare_generator left_generator_or_options
         @right_generator = OCG.prepare_generator right_generator_or_options
 

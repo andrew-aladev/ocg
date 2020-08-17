@@ -26,4 +26,6 @@ GEMSPEC = Gem::Specification.new do |gem|
     `git ls-files -z --directory lib`.split("\x0") +
     %w[AUTHORS LICENSE README.md]
   gem.require_paths = %w[lib]
+
+  gem.required_ruby_version = "~> 2.7"
 end
