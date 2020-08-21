@@ -4,15 +4,13 @@ You can find them on https://hub.docker.com/u/puchuu.
 
 ## Dependencies
 
-- `"CONFIG_X86_X32=y"` in kernel config
 - [docker cli](https://github.com/docker/cli)
 - [buildah](https://github.com/containers/buildah)
-- [bindfs](https://github.com/mpartel/bindfs)
 - [qemu](https://github.com/qemu/qemu) `QEMU_USER_TARGETS="aarch64 aarch64_be arm armeb mips mipsel"`
 
 ## Build
 
-Packages are building using qemu static user, compilation is heavy.
+Packages for cross architectures are building using qemu static user, compilation is heavy.
 Recommended CPU is any modern one with >= `4 cores`.
 Max required RAM ~ `2 GB` per core.
 
