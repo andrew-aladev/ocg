@@ -4,4 +4,3 @@ tmp
 *.gem
 Gemfile.lock
 coverage
-.rebuild_date
