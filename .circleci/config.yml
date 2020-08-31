@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: puchuu/test-ocg_x86_64-gentoo-linux-musl:latest
+      - image: puchuu/test-ocg_i686-gentoo-linux-musl:latest
     branches:
       only:
         - master
