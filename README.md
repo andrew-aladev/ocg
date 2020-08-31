@@ -1,8 +1,8 @@
 # Option combination generator
 
-| Travis | AppVeyor | Cirrus | Circle | Codecov |
-| :---:  | :---:    | :---:  | :---:  | :---:   |
-| [![Travis test status](https://travis-ci.com/andrew-aladev/ocg.svg?branch=master)](https://travis-ci.com/andrew-aladev/ocg) | [![AppVeyor test status](https://ci.appveyor.com/api/projects/status/github/andrew-aladev/ocg?branch=master&svg=true)](https://ci.appveyor.com/project/andrew-aladev/ocg/branch/master) | [![Cirrus test status](https://api.cirrus-ci.com/github/andrew-aladev/ocg.svg?branch=master)](https://cirrus-ci.com/github/andrew-aladev/ocg) | [![Circle test status](https://circleci.com/gh/andrew-aladev/ocg/tree/master.svg?style=shield)](https://circleci.com/gh/andrew-aladev/ocg/tree/master) | [![Codecov](https://codecov.io/gh/andrew-aladev/ocg/branch/master/graph/badge.svg)](https://codecov.io/gh/andrew-aladev/ocg) |
+| Travis | AppVeyor | Circle | Codecov |
+| :---:  | :---:    | :---:  | :---:   |
+| [![Travis test status](https://travis-ci.com/andrew-aladev/ocg.svg?branch=master)](https://travis-ci.com/andrew-aladev/ocg) | [![AppVeyor test status](https://ci.appveyor.com/api/projects/status/github/andrew-aladev/ocg?branch=master&svg=true)](https://ci.appveyor.com/project/andrew-aladev/ocg/branch/master) | [![Circle test status](https://circleci.com/gh/andrew-aladev/ocg/tree/master.svg?style=shield)](https://circleci.com/gh/andrew-aladev/ocg/tree/master) | [![Codecov](https://codecov.io/gh/andrew-aladev/ocg/branch/master/graph/badge.svg)](https://codecov.io/gh/andrew-aladev/ocg) |
 
 ## Installation
 
@@ -162,8 +162,6 @@ complete_generator = almost_complete_generator.mix(
 See universal test script [scripts/ci_test.sh](scripts/ci_test.sh) for CI.
 Please visit [scripts/test-images](scripts/test-images).
 You can run this test script using many native and cross images.
-
-Cirrus CI uses `x86_64-unknown-linux-gnu` image, Circle CI - `x86_64-gentoo-linux-musl` image.
 
 ## License
 
