@@ -46,6 +46,24 @@ It will populate all option combinations.
 
 ## Docs
 
+`OCG.new options` will prepare a generator.
+It will provide all possible option combinations.
+
+| Method      | Description |
+|-------------|-------------|
+| `and`       | provides all combinations between generators |
+| `mix`       | merges combinations without combining, guarantees that both left and right generator combinations will be provided at least once |
+| `or`        | concats generator combinations without merging |
+| `reset`     | allows to receive combinations once again |
+| `next`      | returns next combination |
+| `last`      | returns last combination |
+| `started?`  | returns true when at least one combination was generated |
+| `finished?` | returns true when all combination were generated |
+| `length`    | returns combinations length |
+| `to_a`      | returns combinations array |
+
+You can combine generators using `and`, `mix` and `or`.
+
 Options should be prepared in the following form:
 
 ```ruby
@@ -59,29 +77,6 @@ Options hash should not be empty.
 `option_name` can be any valid hash key.
 `option_values` should be convertable to array using `to_a`.
 `option_values` should not be empty.
-
-`OCG.new options` will prepare a generator.
-It will provide all possible option combinations.
-
-You can combine generators using `and`, `mix` and `or`.
-
-`and` method will provide all combinations between generators.
-`mix` method will merge combinations without combining. `mix` guarantees that both left and right generator combinations will be provided at least once.
-`or` method will concat generator combinations without merging.
-
-`reset` method allows to receive combinations once again.
-
-`next` method returns next combination.
-
-`last` method returns last combination.
-
-`started?` method returns true when at least one combination was generated.
-
-`finished?` method returns true when all combination were generated.
-
-`length` returns combinations length.
-
-`to_a` returns combinations array.
 
 ## Why?
 
