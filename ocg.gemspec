@@ -1,9 +1,11 @@
 # Option combination generator.
 # Copyright (c) 2019 AUTHORS, MIT License.
 
-require "date"
+lib_path = File.expand_path "lib", __dir__
+$LOAD_PATH.unshift lib_path unless $LOAD_PATH.include? lib_path
 
-require_relative "lib/ocg/version"
+require "date"
+require "ocg/version"
 
 GEMSPEC = Gem::Specification.new do |gem|
   gem.name     = "ocg"
