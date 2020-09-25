@@ -1,7 +1,6 @@
-build/*
-pkg
-tmp
-*.gem
-Gemfile.lock
-coverage
 attached-common-root/*
+build/*
+coverage
+Gemfile.lock
+pkg
+*.gem
