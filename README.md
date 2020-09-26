@@ -17,6 +17,8 @@ rake gem
 gem install pkg/ocg-*.gem
 ```
 
+You can also use [overlay](https://github.com/andrew-aladev/overlay) for gentoo.
+
 ## Usage
 
 ```ruby
