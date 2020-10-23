@@ -1,8 +1,8 @@
 # Option combination generator
 
-| Travis | AppVeyor | Circle | Codecov |
-| :---:  | :---:    | :---:  | :---:   |
-| [![Travis test status](https://travis-ci.com/andrew-aladev/ocg.svg?branch=master)](https://travis-ci.com/andrew-aladev/ocg) | [![AppVeyor test status](https://ci.appveyor.com/api/projects/status/github/andrew-aladev/ocg?branch=master&svg=true)](https://ci.appveyor.com/project/andrew-aladev/ocg/branch/master) | [![Circle test status](https://circleci.com/gh/andrew-aladev/ocg/tree/master.svg?style=shield)](https://circleci.com/gh/andrew-aladev/ocg/tree/master) | [![Codecov](https://codecov.io/gh/andrew-aladev/ocg/branch/master/graph/badge.svg)](https://codecov.io/gh/andrew-aladev/ocg) |
+| Travis | AppVeyor | Circle | Codecov | Gem   |
+| :---:  | :---:    | :---:  | :---:   | :---: |
+| [![Travis test status](https://travis-ci.com/andrew-aladev/ocg.svg?branch=master)](https://travis-ci.com/andrew-aladev/ocg) | [![AppVeyor test status](https://ci.appveyor.com/api/projects/status/github/andrew-aladev/ocg?branch=master&svg=true)](https://ci.appveyor.com/project/andrew-aladev/ocg/branch/master) | [![Circle test status](https://circleci.com/gh/andrew-aladev/ocg/tree/master.svg?style=shield)](https://circleci.com/gh/andrew-aladev/ocg/tree/master) | [![Codecov](https://codecov.io/gh/andrew-aladev/ocg/branch/master/graph/badge.svg)](https://codecov.io/gh/andrew-aladev/ocg) | [![Gem](https://img.shields.io/gem/v/ocg.svg)] |
 
 ## Installation
 
