@@ -1,6 +1,6 @@
 language: ruby
 
-matrix:
+jobs:
   include:
     - os: linux
       arch: amd64
