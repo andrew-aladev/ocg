@@ -20,7 +20,7 @@ GEMSPEC = Gem::Specification.new do |gem|
   gem.add_development_dependency "codecov"
   gem.add_development_dependency "minitest", "~> 5.14"
   gem.add_development_dependency "rake"
-  gem.add_development_dependency "rubocop", "~> 1.1.0"
+  gem.add_development_dependency "rubocop", "~> 1.1"
   gem.add_development_dependency "rubocop-performance", "~> 1.8"
   gem.add_development_dependency "simplecov"
 
