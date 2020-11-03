@@ -41,7 +41,7 @@ generator = OCG.new(
   :h => 7..8
 )
 
-puts generator.next until generator.finished?
+generator.each { |combination| puts combination }
 ```
 
 It will populate all option combinations.
@@ -62,8 +62,8 @@ It will provide all possible option combinations.
 | `started?`  | returns true when at least one combination was generated |
 | `finished?` | returns true when all combination were generated |
 | `length`    | returns combinations length |
-| `to_a`      | returns combinations array |
 
+Generator is responsible to any method from [`Enumerable`](https://ruby-doc.org/core-2.7.2/Enumerable.html).
 You can combine generators using `and`, `mix` and `or`.
 
 Options should be prepared in the following form:

@@ -7,6 +7,7 @@ require_relative "error"
 require_relative "options"
 
 class OCG
+  include ::Enumerable
   extend ::Forwardable
 
   DELEGATORS = %i[reset next last started? finished? length].freeze
@@ -35,15 +36,14 @@ class OCG
     Operator::OR.new self, generator_or_options
   end
 
-  def to_a
+  def each(&_block)
     reset
 
-    result = []
-    result << send("next") until finished?
+    yield send("next") until finished?
 
     reset
 
-    result
+    nil
   end
 end
 
