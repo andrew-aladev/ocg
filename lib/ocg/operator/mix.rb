@@ -9,6 +9,16 @@ class OCG
       def initialize(*args)
         super
 
+        reset_main_generator
+      end
+
+      def initialize_copy(*args)
+        super
+
+        reset_main_generator
+      end
+
+      def reset_main_generator
         @main_generator =
           if @right_generator.length > @left_generator.length
             @right_generator

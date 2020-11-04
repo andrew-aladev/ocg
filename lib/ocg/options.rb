@@ -1,10 +1,15 @@
 # Option combination generator.
 # Copyright (c) 2019 AUTHORS, MIT License.
 
+require_relative "copyable"
 require_relative "validation"
 
 class OCG
   class Options
+    include Copyable
+
+    VARIABLES_TO_COPY = %i[options keys last_options value_indexes].freeze
+
     def initialize(options)
       Validation.validate_options options
       @options = options.transform_values(&:to_a)

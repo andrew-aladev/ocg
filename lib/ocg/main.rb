@@ -3,14 +3,17 @@
 
 require "forwardable"
 
+require_relative "copyable"
 require_relative "error"
 require_relative "options"
 
 class OCG
+  include Copyable
   include ::Enumerable
   extend ::Forwardable
 
-  DELEGATORS = %i[reset next last started? finished? length].freeze
+  VARIABLES_TO_COPY = %i[generator].freeze
+  DELEGATORS        = %i[reset next last started? finished? length].freeze
 
   def initialize(generator_or_options)
     @generator = self.class.prepare_generator generator_or_options
@@ -37,11 +40,10 @@ class OCG
   end
 
   def each(&_block)
-    reset
+    instance = dup
+    instance.reset
 
-    yield send("next") until finished?
-
-    reset
+    yield instance.next until instance.finished?
 
     nil
   end
