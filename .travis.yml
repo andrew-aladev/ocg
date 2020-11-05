@@ -26,6 +26,29 @@ jobs:
       arch: amd64
       osx_image: xcode12.2
       rvm: 2.7
+    - os: windows
+      arch: amd64
+      language: bash # using git bash
+      before_install:
+        - choco uninstall mingw -y
+        - choco upgrade msys2 ruby -y
+        - ridk.cmd exec pacman --sync --noconfirm --needed
+            mingw-w64-x86_64-binutils
+            mingw-w64-x86_64-crt-git
+            mingw-w64-x86_64-gcc
+            make
+
+before_cache:
+  - |
+    if [ "$TRAVIS_OS_NAME" == "windows" ]; then
+      # https://unix.stackexchange.com/a/137322/107554
+      ridk.cmd exec pacman --sync --clean --noconfirm
+    fi
+
+cache:
+  directories:
+    - ${HOME}/AppData/Local/Temp/chocolatey
+    - /C/tools
 
 before_install:
   - gem install bundler
