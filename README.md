@@ -62,8 +62,13 @@ It will provide all possible option combinations.
 | `started?`  | returns true when at least one combination was generated |
 | `finished?` | returns true when all combination were generated |
 | `length`    | returns combinations length |
+| `dup`       | returns generator duplicate |
+| `clone`     | returns generator clone |
 
 Generator is responsible to any method from [`Enumerable`](https://ruby-doc.org/core-2.7.2/Enumerable.html).
+Enumerator will be provided using generator duplicate.
+So enumerable api is separated from bare metal api (`reset`, `next`, `last`, `started?`, `finished?`).
+
 You can combine generators using `and`, `mix` and `or`.
 
 Options should be prepared in the following form:

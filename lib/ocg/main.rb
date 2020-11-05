@@ -12,8 +12,10 @@ class OCG
   include ::Enumerable
   extend ::Forwardable
 
-  VARIABLES_TO_COPY = %i[generator].freeze
   DELEGATORS        = %i[reset next last started? finished? length].freeze
+  VARIABLES_TO_COPY = %i[generator].freeze
+
+  def_delegators :@generator, *DELEGATORS
 
   def initialize(generator_or_options)
     @generator = self.class.prepare_generator generator_or_options
@@ -24,8 +26,6 @@ class OCG
 
     Options.new generator_or_options
   end
-
-  def_delegators :@generator, *DELEGATORS
 
   def and(generator_or_options)
     Operator::AND.new self, generator_or_options

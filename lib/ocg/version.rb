@@ -2,5 +2,5 @@
 # Copyright (c) 2019 AUTHORS, MIT License.
 
 class OCG
-  VERSION = "1.2.1".freeze
+  VERSION = "1.3.0".freeze
 end
