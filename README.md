@@ -159,6 +159,10 @@ complete_generator = almost_complete_generator.mix(
 )
 ```
 
+## Operating systems
+
+GNU/Linux, FreeBSD, OSX, Windows.
+
 ## CI
 
 Please visit [scripts/test-images](scripts/test-images).
