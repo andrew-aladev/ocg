@@ -33,19 +33,30 @@ jobs:
       arch: amd64
       language: bash # using git bash
       before_install:
-        - choco uninstall mingw -y
-        - choco upgrade msys2 ruby -y
-        - ridk.cmd exec pacman --sync --noconfirm --needed
-            mingw-w64-x86_64-binutils
-            mingw-w64-x86_64-crt-git
-            mingw-w64-x86_64-gcc
-            make
+        - |-
+          choco uninstall -y mingw ruby
+          choco upgrade -y msys2
+
+          export msys2='cmd //C RefreshEnv.cmd '
+          export msys2+='& set MSYS=winsymlinks:nativestrict '
+          export msys2+='& C:\\tools\\msys64\\msys2_shell.cmd -defterm -no-start'
+          export mingw64="$msys2 -mingw64 -full-path -here -c "\"\$@"\" --"
+          export msys2+=" -msys2 -c "\"\$@"\" --"
+
+          $msys2 pacman --sync --noconfirm --needed \
+            mingw-w64-x86_64-binutils \
+            mingw-w64-x86_64-crt-git \
+            mingw-w64-x86_64-gcc \
+            make \
+            mingw-w64-x86_64-ruby
+
+          export C_INCLUDE_PATH=/mingw64/include/ruby-*
 
 before_cache:
-  - |
+  - |-
     if [ "$TRAVIS_OS_NAME" == "windows" ]; then
       # https://unix.stackexchange.com/a/137322/107554
-      ridk.cmd exec pacman --sync --clean --noconfirm
+      $msys2 exec pacman --sync --clean --noconfirm
     fi
 
 cache:
@@ -54,7 +65,17 @@ cache:
     - /C/tools
 
 before_install:
-  - gem install bundler
+  - |-
+    if [ "$TRAVIS_OS_NAME" == "windows" ]; then
+      $mingw64 gem install bundler
+    else
+      gem install bundler
+    fi
 
 script:
-  - scripts/ci_test.sh
+  - |-
+    if [ "$TRAVIS_OS_NAME" == "windows" ]; then
+      $mingw64 scripts/ci_test.sh
+    else
+      scripts/ci_test.sh
+    fi
