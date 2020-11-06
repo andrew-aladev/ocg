@@ -50,8 +50,6 @@ jobs:
             make \
             mingw-w64-x86_64-ruby
 
-          export C_INCLUDE_PATH=/mingw64/include/ruby-*
-
 before_cache:
   - |-
     if [ "$TRAVIS_OS_NAME" == "windows" ]; then
