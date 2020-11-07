@@ -161,7 +161,7 @@ complete_generator = almost_complete_generator.mix(
 
 ## Operating systems
 
-GNU/Linux, FreeBSD, OSX, Windows.
+GNU/Linux, FreeBSD, OSX, Windows (MinGW).
 
 ## CI
 
