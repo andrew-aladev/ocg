@@ -208,7 +208,7 @@ class OCG
     end
 
     private_class_method def self.get_option_combinations(options)
-      combinations = options.reduce([]) do |result, (key, values)|
+      combinations = options.reduce [] do |result, (key, values)|
         values = values.map { |value| [key, value] }
         next values.map { |value| [value] } if result.empty?
 
