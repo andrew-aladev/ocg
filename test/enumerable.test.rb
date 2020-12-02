@@ -16,9 +16,9 @@ class OCG
             assert_equal combination, combinations[index]
           end
         when :map
-          assert_equal generator.map { |combination| combination }, combinations
+          assert_equal(combinations, generator.map { |combination| combination })
         when :to_a
-          assert_equal generator.to_a, combinations
+          assert_equal combinations, generator.to_a
         end
       end
 
@@ -35,13 +35,13 @@ class OCG
       def test_after_started
         Test.get_datas do |generator, combinations|
           METHODS.each do |method|
-            assert_equal generator.next, combinations[0]
+            assert_equal combinations[0], generator.next
             assert generator.started?
 
             process_method generator, combinations, method
 
             assert generator.started?
-            assert_equal generator.next, combinations[1]
+            assert_equal combinations[1], generator.next
 
             generator.reset
           end
@@ -52,7 +52,7 @@ class OCG
         Test.get_datas do |generator, combinations|
           METHODS.each do |method|
             combinations.each do |combination|
-              assert_equal generator.next, combination
+              assert_equal combination, generator.next
             end
 
             assert generator.finished?

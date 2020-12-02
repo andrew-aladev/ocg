@@ -12,7 +12,7 @@ class OCG
           refute generator.finished?
 
           combinations.each do |combination|
-            assert_equal generator.next, combination
+            assert_equal combination, generator.next
           end
 
           assert generator.finished?
@@ -23,14 +23,14 @@ class OCG
         Test.get_datas do |generator, combinations|
           refute generator.finished?
 
-          assert_equal generator.next, combinations[0]
+          assert_equal combinations[0], generator.next
           refute generator.finished?
 
           generator.reset
           refute generator.finished?
 
           combinations.each do |combination|
-            assert_equal generator.next, combination
+            assert_equal combination, generator.next
           end
 
           assert generator.finished?
@@ -39,7 +39,7 @@ class OCG
           refute generator.finished?
 
           combinations.each do |combination|
-            assert_equal generator.next, combination
+            assert_equal combination, generator.next
           end
 
           assert generator.finished?

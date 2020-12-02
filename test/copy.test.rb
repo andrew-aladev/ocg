@@ -27,8 +27,8 @@ class OCG
 
             # Reading first combination from initial generator.
 
-            assert_equal generator.next, first_combination
-            assert_equal generator.last, first_combination
+            assert_equal first_combination, generator.next
+            assert_equal first_combination, generator.last
             assert generator.started?
             refute generator.finished?
 
@@ -38,35 +38,35 @@ class OCG
 
             # Reading first combination from generator copy.
 
-            assert_equal generator_copy.next, first_combination
-            assert_equal generator_copy.last, first_combination
+            assert_equal first_combination, generator_copy.next
+            assert_equal first_combination, generator_copy.last
             assert generator_copy.started?
             refute generator_copy.finished?
 
-            assert_equal generator.last, first_combination
+            assert_equal first_combination, generator.last
             assert generator.started?
             refute generator.finished?
 
             # Reading other combinations from initial generator.
 
             other_combinations.each do |combination|
-              assert_equal generator.next, combination
-              assert_equal generator.last, combination
+              assert_equal combination, generator.next
+              assert_equal combination, generator.last
             end
 
             assert generator.next.nil?
             assert generator.started?
             assert generator.finished?
 
-            assert_equal generator_copy.last, first_combination
+            assert_equal first_combination, generator_copy.last
             assert generator_copy.started?
             refute generator_copy.finished?
 
             # Reading other combinations from generator copy.
 
             other_combinations.each do |combination|
-              assert_equal generator_copy.next, combination
-              assert_equal generator_copy.last, combination
+              assert_equal combination, generator_copy.next
+              assert_equal combination, generator_copy.last
             end
 
             assert generator_copy.next.nil?
@@ -88,17 +88,17 @@ class OCG
 
             # Reading first combination from generators.
 
-            assert_equal generator.next, first_combination
-            assert_equal generator.last, first_combination
+            assert_equal first_combination, generator.next
+            assert_equal first_combination, generator.last
             assert generator_copy.last.nil?
 
-            assert_equal generator_copy.next, first_combination
-            assert_equal generator_copy.last, first_combination
-            assert_equal generator.last, first_combination
+            assert_equal first_combination, generator_copy.next
+            assert_equal first_combination, generator_copy.last
+            assert_equal first_combination, generator.last
 
             generator.reset
             assert generator.last.nil?
-            assert_equal generator_copy.last, first_combination
+            assert_equal first_combination, generator_copy.last
 
             generator_copy.reset
             assert generator_copy.last.nil?
@@ -107,16 +107,16 @@ class OCG
             # Reading all combinations from generators.
 
             combinations.each do |combination|
-              assert_equal generator.next, combination
-              assert_equal generator.last, combination
+              assert_equal combination, generator.next
+              assert_equal combination, generator.last
             end
 
             assert generator.next.nil?
             assert generator_copy.last.nil?
 
             combinations.each do |combination|
-              assert_equal generator_copy.next, combination
-              assert_equal generator_copy.last, combination
+              assert_equal combination, generator_copy.next
+              assert_equal combination, generator_copy.last
             end
 
             assert generator.next.nil?
@@ -145,7 +145,7 @@ class OCG
             frozen_generator      = generator.freeze
             frozen_generator_copy = frozen_generator.send method
 
-            assert_equal frozen_generator_copy.frozen?, method == :clone
+            assert_equal method == :clone, frozen_generator_copy.frozen?
           end
         end
       end
