@@ -4,6 +4,8 @@ environment:
   matrix:
     - job_name: Ubuntu
       appveyor_build_worker_image: Ubuntu2004
+      APPVEYOR: True
+      CI: True
     - job_name: MacOS
       appveyor_build_worker_image: macos
     - job_name: Windows

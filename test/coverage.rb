@@ -2,8 +2,6 @@
 # Copyright (c) 2019 AUTHORS, MIT License.
 
 if ENV["CI"]
-  pp ENV
-
   require "codecov"
   require "simplecov"
 
