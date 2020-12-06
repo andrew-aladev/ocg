@@ -1,12 +1,45 @@
-image: Ubuntu2004
+build: off
 
 environment:
   matrix:
-    - RUBY_VERSION: 25
-    - RUBY_VERSION: 26
-    - RUBY_VERSION: 27
+    - job_name: Ubuntu and ruby 2.5
+      appveyor_build_worker_image: Ubuntu2004
+      RUBY_VERSION: 25
+    - job_name: Ubuntu and ruby 2.6
+      appveyor_build_worker_image: Ubuntu2004
+      RUBY_VERSION: 26
+    - job_name: Ubuntu and ruby 2.7
+      appveyor_build_worker_image: Ubuntu2004
+      RUBY_VERSION: 27
+    # - job_name: MacOS and ruby 2.7
+    #   appveyor_build_worker_image: macos
+    #   RUBY_VERSION: 27
+    # - job_name: Windows and ruby 2.7
+    #   appveyor_build_worker_image: Visual Studio 2019
+    #   CHERE_INVOKING: 1
+    #   MSYSTEM: MINGW64
+    #   RUBY_VERSION: 27
 
-test_script:
-  - sh: scripts/ci_test.sh
+for:
+  -
+    matrix:
+      only:
+        - job_name: Ubuntu and ruby 2.5
+        - job_name: Ubuntu and ruby 2.6
+        - job_name: Ubuntu and ruby 2.7
+    test_script:
+      - sh: scripts/ci_test.sh
 
-build: off
+  # -
+  #   matrix:
+  #     only:
+  #       - job_name: MacOS
+  #   test_script:
+  #     - sh: scripts/ci_test.sh
+
+  # -
+  #   matrix:
+  #     only:
+  #       - job_name: Windows
+  #   test_script:
+  #     - cmd: C:\msys64\usr\bin\bash -cl "./scripts/ci_test.sh"
