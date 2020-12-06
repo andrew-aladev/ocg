@@ -17,63 +17,9 @@ jobs:
     - os: linux
       arch: arm64
       dist: focal
-    - os: osx
-      arch: amd64
-      osx_image: xcode12.2
-      rvm: 2.5
-    - os: osx
-      arch: amd64
-      osx_image: xcode12.2
-      rvm: 2.6
-    - os: osx
-      arch: amd64
-      osx_image: xcode12.2
-      rvm: 2.7
-    - os: windows
-      arch: amd64
-      language: bash # using git bash
-      before_install:
-        - |-
-          choco uninstall -y mingw ruby
-          choco upgrade -y msys2
-
-          export msys2='cmd //C RefreshEnv.cmd '
-          export msys2+='& set MSYS=winsymlinks:nativestrict '
-          export msys2+='& C:\\tools\\msys64\\msys2_shell.cmd -defterm -no-start'
-          export mingw64="$msys2 -mingw64 -full-path -here -c "\"\$@"\" --"
-          export msys2+=" -msys2 -c "\"\$@"\" --"
-
-          $msys2 pacman --sync --noconfirm --needed \
-            mingw-w64-x86_64-binutils \
-            mingw-w64-x86_64-crt-git \
-            mingw-w64-x86_64-gcc \
-            make \
-            mingw-w64-x86_64-ruby
-
-before_cache:
-  - |-
-    if [ "$TRAVIS_OS_NAME" == "windows" ]; then
-      # https://unix.stackexchange.com/a/137322/107554
-      $msys2 exec pacman --sync --clean --noconfirm
-    fi
-
-cache:
-  directories:
-    - ${HOME}/AppData/Local/Temp/chocolatey
-    - /C/tools
 
 before_install:
-  - |-
-    if [ "$TRAVIS_OS_NAME" == "windows" ]; then
-      $mingw64 gem install bundler
-    else
-      gem install bundler
-    fi
+  - gem install bundler
 
 script:
-  - |-
-    if [ "$TRAVIS_OS_NAME" == "windows" ]; then
-      $mingw64 scripts/ci_test.sh
-    else
-      scripts/ci_test.sh
-    fi
+  - scripts/ci_test.sh
