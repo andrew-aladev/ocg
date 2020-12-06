@@ -1,8 +1,6 @@
 # Option combination generator.
 # Copyright (c) 2019 AUTHORS, MIT License.
 
-pp ENV
-
 if ENV["CI"]
   require "codecov"
   require "simplecov"
