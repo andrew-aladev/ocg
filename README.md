@@ -1,7 +1,7 @@
 # Option combination generator
 
-| AppVeyor | Circle | Github Actions | Codecov | Gem   |
-| :---:    | :---:  | :------------: | :---:   | :---: |
+| AppVeyor | Circle | Github Actions | Codecov | Gem |
+| :------: | :----: | :------------: | :-----: | :-: |
 | [![AppVeyor test status](https://ci.appveyor.com/api/projects/status/github/andrew-aladev/ocg?branch=master&svg=true)](https://ci.appveyor.com/project/andrew-aladev/ocg/branch/master) | [![Circle test status](https://circleci.com/gh/andrew-aladev/ocg/tree/master.svg?style=shield)](https://circleci.com/gh/andrew-aladev/ocg/tree/master) | [![Github Actions test status](https://github.com/andrew-aladev/ocg/workflows/tests/badge.svg?branch=master)](https://github.com/andrew-aladev/ocg/actions) | [![Codecov](https://codecov.io/gh/andrew-aladev/ocg/branch/master/graph/badge.svg)](https://codecov.io/gh/andrew-aladev/ocg) | [![Gem](https://img.shields.io/gem/v/ocg.svg)](https://rubygems.org/gems/ocg) |
 
 ## Installation
