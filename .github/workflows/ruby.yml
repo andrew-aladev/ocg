@@ -16,6 +16,8 @@ jobs:
           - 2.6
           - 2.7
 
+    runs-on: ${{ matrix.os }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
