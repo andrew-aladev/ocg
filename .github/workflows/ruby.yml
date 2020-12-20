@@ -1,4 +1,4 @@
-name: tests
+name: test
 
 on:
   - push
@@ -26,7 +26,6 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
-          bundler-cache: true
 
-      - name: Rake
-        run: bundle exec rake
+      - name: test
+        run: scripts/ci_test.sh
