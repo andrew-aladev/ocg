@@ -65,7 +65,7 @@ It will provide all possible option combinations.
 | `dup`       | returns generator duplicate |
 | `clone`     | returns generator clone |
 
-Generator is responsible to any method from [`Enumerable`](https://ruby-doc.org/core-2.7.2/Enumerable.html).
+Generator is responsible to any method from [`Enumerable`](https://ruby-doc.org/core-3.0.0/Enumerable.html).
 Enumerator will be provided using generator duplicate.
 So enumerable api is separated from bare metal api (`reset`, `next`, `last`, `started?`, `finished?`).
 
