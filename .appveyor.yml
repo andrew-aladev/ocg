@@ -36,6 +36,6 @@ for:
       only:
         - job_name: windows
     init:
-      - cmd: set PATH="C:\Ruby%RUBY_VERSION%\bin;%PATH%"
+      - cmd: set "PATH=C:\Ruby%RUBY_VERSION%\bin;%PATH%"
     test_script:
       - cmd: C:\msys64\usr\bin\bash -l "%cd%\scripts\ci_test.sh"
