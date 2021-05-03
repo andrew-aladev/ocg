@@ -54,7 +54,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: mswin
-      - name: Coverage toolchains
+      - name: CI test
         run: call "C:\Program Files\Git\bin\bash.exe" -l "%cd%\scripts\ci_test.sh"
 
   windows-mingw:
@@ -93,7 +93,7 @@ jobs:
           platform: x64
           install-dir: C:\cygwin64
           packages: ruby
-      - name: Coverage toolchains
+      - name: CI test
         run: |
           set "PATH="
           C:\cygwin64\bin\bash.exe -l "%cd%\scripts\ci_test.sh"

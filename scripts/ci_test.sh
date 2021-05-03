@@ -7,7 +7,7 @@ cd "$DIR"
 cd ".."
 
 bash -cl "\
-  gem install bundler && \
+  gem install bundler --force && \
   bundle install && \
   bundle exec rake \
 "

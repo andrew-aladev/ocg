@@ -12,6 +12,6 @@ cd ".."
 rm -f "Gemfile.lock"
 
 bash -cl "\
-  gem install bundler && \
+  gem install bundler --force && \
   bundle update \
 "
