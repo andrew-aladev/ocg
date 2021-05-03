@@ -6,6 +6,8 @@
 
 ## Installation
 
+Operating systems: GNU/Linux, OSX, FreeBSD, Windows.
+
 ```sh
 gem install ocg
 ```
@@ -65,7 +67,7 @@ It will provide all possible option combinations.
 | `dup`       | returns generator duplicate |
 | `clone`     | returns generator clone |
 
-Generator is responsible to any method from [`Enumerable`](https://ruby-doc.org/core-3.0.0/Enumerable.html).
+Generator is responsible to any method from [`Enumerable`](https://ruby-doc.org/core-3.0.1/Enumerable.html).
 Enumerator will be provided using generator duplicate.
 So enumerable api is separated from bare metal api (`reset`, `next`, `last`, `started?`, `finished?`).
 
@@ -158,10 +160,6 @@ complete_generator = almost_complete_generator.mix(
   )
 )
 ```
-
-## Operating systems
-
-GNU/Linux, FreeBSD, OSX, Windows (MinGW).
 
 ## CI
 
