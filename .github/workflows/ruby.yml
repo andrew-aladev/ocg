@@ -94,7 +94,7 @@ jobs:
         with:
           platform: x64
           install-dir: C:\cygwin64
-          packages: ruby
+          packages: git ruby
       - name: CI test
         run: |
           set "PATH="
