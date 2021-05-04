@@ -1,41 +1,108 @@
 build: off
 
 environment:
+  global:
+    APPVEYOR: True
+    CI: True
+
   matrix:
-    - job_name: ubuntu
+    - job_name: ubuntu (2.5)
       appveyor_build_worker_image: Ubuntu2004
-      APPVEYOR: True
-      CI: True
-    - job_name: macos
+      RUBY_VERSION: 25
+    - job_name: ubuntu (2.6)
+      appveyor_build_worker_image: Ubuntu2004
+      RUBY_VERSION: 26
+    - job_name: ubuntu (2.7)
+      appveyor_build_worker_image: Ubuntu2004
+      RUBY_VERSION: 27
+    - job_name: ubuntu (3)
+      appveyor_build_worker_image: Ubuntu2004
+      RUBY_VERSION: 30
+    - job_name: macos (2.5)
       appveyor_build_worker_image: macos
-      APPVEYOR: True
-      CI: True
+      RUBY_VERSION: 25
+    - job_name: macos (2.6)
+      appveyor_build_worker_image: macos
+      RUBY_VERSION: 26
+    - job_name: macos (2.7)
+      appveyor_build_worker_image: macos
+      RUBY_VERSION: 27
+    - job_name: macos (3)
+      appveyor_build_worker_image: macos
+      RUBY_VERSION: 30
     - job_name: windows
       appveyor_build_worker_image: Visual Studio 2019
-      CHERE_INVOKING: 1
+      RUBY_VERSION: 30
+    - job_name: windows-mingw (2.5)
+      appveyor_build_worker_image: Visual Studio 2019
       MSYSTEM: MINGW64
+      RUBY_VERSION: 25
+    - job_name: windows-mingw (2.6)
+      appveyor_build_worker_image: Visual Studio 2019
+      MSYSTEM: MINGW64
+      RUBY_VERSION: 26
+    - job_name: windows-mingw (2.7)
+      appveyor_build_worker_image: Visual Studio 2019
+      MSYSTEM: MINGW64
+      RUBY_VERSION: 27
+    - job_name: windows-mingw (3)
+      appveyor_build_worker_image: Visual Studio 2019
+      MSYSTEM: MINGW64
+      RUBY_VERSION: 30
+    - job_name: windows-cygwin
+      appveyor_build_worker_image: Visual Studio 2019
+      CYGWIN_NOWINPATH: 1
+      SHELLOPTS: igncr
       RUBY_VERSION: 30
 
 for:
   -
     matrix:
       only:
-        - job_name: ubuntu
+        - job_name: /^ubuntu/
     test_script:
       - sh: scripts/ci_test.sh
 
   -
     matrix:
       only:
-        - job_name: macos
+        - job_name: /^macos/
     test_script:
-      - sh: sudo -E scripts/ci_test.sh
+      - sh: scripts/ci_test.sh
 
-  -
-    matrix:
-      only:
-        - job_name: windows
-    init:
-      - cmd: set "PATH=C:\Ruby%RUBY_VERSION%\bin;%PATH%"
-    test_script:
-      - cmd: C:\msys64\usr\bin\bash -l "%cd%\scripts\ci_test.sh"
+  # -
+  #   matrix:
+  #     only:
+  #       - job_name: windows
+  #   test_script:
+  #     - cmd: set "PATH=C:\Ruby%RUBY_VERSION%\bin;%PATH%"
+  #     - cmd: call "C:\Program Files\Git\bin\bash.exe" -l "%cd%\scripts\ci_test.sh"
+
+  # -
+  #   matrix:
+  #     only:
+  #       - job_name: windows-mingw
+  #   init:
+  #     - cmd: >-
+  #         C:\msys64\usr\bin\bash -cl "
+  #         pacman --sync --noconfirm --needed
+  #         make
+  #         mingw-w64-x86_64-curl
+  #         mingw-w64-x86_64-cmake
+  #         mingw-w64-x86_64-gcc
+  #         mingw-w64-x86_64-clang
+  #         mingw-w64-x86_64-llvm
+  #         mingw-w64-x86_64-gmp
+  #         mingw-w64-x86_64-libtommath
+  #         "
+  #   test_script:
+  #     - cmd: C:\msys64\usr\bin\bash -l "%cd%\scripts\coverage_toolchains.sh"
+
+  # -
+  #   matrix:
+  #     only:
+  #       - job_name: windows
+  #   init:
+  #     - cmd: set "PATH=C:\Ruby%RUBY_VERSION%\bin;%PATH%"
+  #   test_script:
+  #     - cmd: C:\msys64\usr\bin\bash -l "%cd%\scripts\ci_test.sh"
