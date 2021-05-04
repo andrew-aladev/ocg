@@ -97,8 +97,7 @@ jobs:
           packages: ruby
       - name: CI test
         run: |
-          set "PATH="
+          set "PATH=" && set "CHERE_INVOKING=1"
           C:\cygwin64\bin\bash.exe -l "%cd%\scripts\ci_test.sh"
         env:
-          CHERE_INVOKING: 1
           SHELLOPTS: igncr
