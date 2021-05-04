@@ -17,7 +17,7 @@ environment:
       RUBY_VERSION: ruby-2.7
     - job_name: ubuntu (3)
       appveyor_build_worker_image: Ubuntu2004
-      RUBY_VERSION: ruby-3
+      RUBY_VERSION: ruby-3.0
     - job_name: macos (2.5)
       appveyor_build_worker_image: macos
       RUBY_VERSION: ruby-2.5
@@ -29,7 +29,7 @@ environment:
       RUBY_VERSION: ruby-2.7
     - job_name: macos (3)
       appveyor_build_worker_image: macos
-      RUBY_VERSION: ruby-3
+      RUBY_VERSION: ruby-3.0
     - job_name: windows
       appveyor_build_worker_image: Visual Studio 2019
       RUBY_VERSION: 30
@@ -48,7 +48,7 @@ environment:
     - job_name: windows-mingw (3)
       appveyor_build_worker_image: Visual Studio 2019
       MSYSTEM: MINGW64
-      RUBY_VERSION: ruby-3
+      RUBY_VERSION: ruby-3.0
     - job_name: windows-cygwin
       appveyor_build_worker_image: Visual Studio 2019
       CYGWIN_NOWINPATH: 1
