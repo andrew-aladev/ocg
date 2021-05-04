@@ -59,14 +59,14 @@ for:
   -
     matrix:
       only:
-        - job_name: /^ubuntu/
+        - job_name: /ubuntu/
     test_script:
       - sh: scripts/ci_test.sh
 
   -
     matrix:
       only:
-        - job_name: /^macos/
+        - job_name: /macos/
     test_script:
       - sh: scripts/ci_test.sh
 
