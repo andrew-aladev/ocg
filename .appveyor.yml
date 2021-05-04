@@ -8,47 +8,47 @@ environment:
   matrix:
     - job_name: ubuntu (2.5)
       appveyor_build_worker_image: Ubuntu2004
-      RUBY_VERSION: 25
+      RUBY_VERSION: ruby-2.5
     - job_name: ubuntu (2.6)
       appveyor_build_worker_image: Ubuntu2004
-      RUBY_VERSION: 26
+      RUBY_VERSION: ruby-2.6
     - job_name: ubuntu (2.7)
       appveyor_build_worker_image: Ubuntu2004
-      RUBY_VERSION: 27
+      RUBY_VERSION: ruby-2.7
     - job_name: ubuntu (3)
       appveyor_build_worker_image: Ubuntu2004
-      RUBY_VERSION: 30
+      RUBY_VERSION: ruby-3
     - job_name: macos (2.5)
       appveyor_build_worker_image: macos
-      RUBY_VERSION: 25
+      RUBY_VERSION: ruby-2.5
     - job_name: macos (2.6)
       appveyor_build_worker_image: macos
-      RUBY_VERSION: 26
+      RUBY_VERSION: ruby-2.6
     - job_name: macos (2.7)
       appveyor_build_worker_image: macos
-      RUBY_VERSION: 27
+      RUBY_VERSION: ruby-2.7
     - job_name: macos (3)
       appveyor_build_worker_image: macos
-      RUBY_VERSION: 30
+      RUBY_VERSION: ruby-3
     - job_name: windows
       appveyor_build_worker_image: Visual Studio 2019
       RUBY_VERSION: 30
     - job_name: windows-mingw (2.5)
       appveyor_build_worker_image: Visual Studio 2019
       MSYSTEM: MINGW64
-      RUBY_VERSION: 25
+      RUBY_VERSION: ruby-2.5
     - job_name: windows-mingw (2.6)
       appveyor_build_worker_image: Visual Studio 2019
       MSYSTEM: MINGW64
-      RUBY_VERSION: 26
+      RUBY_VERSION: ruby-2.6
     - job_name: windows-mingw (2.7)
       appveyor_build_worker_image: Visual Studio 2019
       MSYSTEM: MINGW64
-      RUBY_VERSION: 27
+      RUBY_VERSION: ruby-2.7
     - job_name: windows-mingw (3)
       appveyor_build_worker_image: Visual Studio 2019
       MSYSTEM: MINGW64
-      RUBY_VERSION: 30
+      RUBY_VERSION: ruby-3
     - job_name: windows-cygwin
       appveyor_build_worker_image: Visual Studio 2019
       CYGWIN_NOWINPATH: 1
@@ -63,6 +63,7 @@ for:
         - job_name: ubuntu (2.7)
         - job_name: ubuntu (3)
     test_script:
+      - sh: rvm use "$RUBY_VERSION"
       - sh: scripts/ci_test.sh
 
   -
@@ -73,6 +74,7 @@ for:
         - job_name: macos (2.7)
         - job_name: macos (3)
     test_script:
+      - sh: rvm use "$RUBY_VERSION"
       - sh: scripts/ci_test.sh
 
   -
@@ -91,6 +93,7 @@ for:
         - job_name: windows-mingw (2.7)
         - job_name: windows-mingw (3)
     test_script:
+      - cmd: C:\msys64\usr\bin\bash -cl "rvm use \"$RUBY_VERSION\""
       - cmd: C:\msys64\usr\bin\bash -l "%cd%\scripts\ci_test.sh"
 
   -
