@@ -53,7 +53,6 @@ environment:
       appveyor_build_worker_image: Visual Studio 2019
       CYGWIN_NOWINPATH: 1
       SHELLOPTS: igncr
-      RUBY_VERSION: 30
 
 for:
   -
@@ -76,39 +75,35 @@ for:
     test_script:
       - sh: scripts/ci_test.sh
 
-  # -
-  #   matrix:
-  #     only:
-  #       - job_name: windows
-  #   test_script:
-  #     - cmd: set "PATH=C:\Ruby%RUBY_VERSION%\bin;%PATH%"
-  #     - cmd: call "C:\Program Files\Git\bin\bash.exe" -l "%cd%\scripts\ci_test.sh"
+  -
+    matrix:
+      only:
+        - job_name: windows
+    test_script:
+      - cmd: set "PATH=C:\Ruby%RUBY_VERSION%\bin;%PATH%"
+      - cmd: call "C:\Program Files\Git\bin\bash.exe" -l "%cd%\scripts\ci_test.sh"
 
-  # -
-  #   matrix:
-  #     only:
-  #       - job_name: windows-mingw
-  #   init:
-  #     - cmd: >-
-  #         C:\msys64\usr\bin\bash -cl "
-  #         pacman --sync --noconfirm --needed
-  #         make
-  #         mingw-w64-x86_64-curl
-  #         mingw-w64-x86_64-cmake
-  #         mingw-w64-x86_64-gcc
-  #         mingw-w64-x86_64-clang
-  #         mingw-w64-x86_64-llvm
-  #         mingw-w64-x86_64-gmp
-  #         mingw-w64-x86_64-libtommath
-  #         "
-  #   test_script:
-  #     - cmd: C:\msys64\usr\bin\bash -l "%cd%\scripts\coverage_toolchains.sh"
+  -
+    matrix:
+      only:
+        - job_name: windows-mingw (2.5)
+        - job_name: windows-mingw (2.6)
+        - job_name: windows-mingw (2.7)
+        - job_name: windows-mingw (3)
+    test_script:
+      - cmd: C:\msys64\usr\bin\bash -l "%cd%\scripts\ci_test.sh"
 
-  # -
-  #   matrix:
-  #     only:
-  #       - job_name: windows
-  #   init:
-  #     - cmd: set "PATH=C:\Ruby%RUBY_VERSION%\bin;%PATH%"
-  #   test_script:
-  #     - cmd: C:\msys64\usr\bin\bash -l "%cd%\scripts\ci_test.sh"
+  -
+    matrix:
+      only:
+        - job_name: windows-cygwin
+    init:
+      - cmd: >-
+          C:\cygwin64\setup-x86_64.exe --quiet-mode --only-site
+          --site "https://mirrors.kernel.org/sourceware/cygwin"
+          --root "C:\cygwin64"
+          --local-package-dir "C:\cygwin64\var\cache\setup"
+          --packages "ruby"
+    test_script:
+      - cmd: set "PATH="
+      - cmd: C:\cygwin64\bin\bash -l "%cd%\scripts\ci_test.sh"
