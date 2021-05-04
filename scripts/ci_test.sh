@@ -5,8 +5,10 @@ DIR=$(dirname "${BASH_SOURCE[0]}")
 cd "$DIR"
 
 cd ".."
+ROOT_DIR=$(pwd)
 
-bash -cl "\
+/usr/bin/env bash -cl "\
+  cd \"$ROOT_DIR\" && \
   gem install bundler --force && \
   bundle install && \
   bundle exec rake \
