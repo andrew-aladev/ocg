@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Ruby setup
+      - name: Setup ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
@@ -35,7 +35,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Ruby setup
+      - name: Setup ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
@@ -57,7 +57,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Ruby setup
+      - name: Setup ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
@@ -72,7 +72,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Setup dependencies
+      - name: Setup msys2
         uses: msys2/setup-msys2@v2
         with:
           install: git mingw-w64-x86_64-ruby
@@ -87,7 +87,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Setup dependencies
+      - name: Setup cygwin
         uses: egor-tensin/setup-cygwin@v3
         with:
           platform: x64
