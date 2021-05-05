@@ -30,25 +30,21 @@ environment:
     - job_name: macos (3)
       appveyor_build_worker_image: macos
       RUBY_VERSION: ruby-3.0
-    - job_name: windows
+    - job_name: windows (2.5)
+      appveyor_build_worker_image: Visual Studio 2019
+      RUBY_VERSION: 25
+    - job_name: windows (2.6)
+      appveyor_build_worker_image: Visual Studio 2019
+      RUBY_VERSION: 26
+    - job_name: windows (2.7)
+      appveyor_build_worker_image: Visual Studio 2019
+      RUBY_VERSION: 27
+    - job_name: windows (3.0)
       appveyor_build_worker_image: Visual Studio 2019
       RUBY_VERSION: 30
-    - job_name: windows-mingw (2.5)
+    - job_name: windows-mingw
       appveyor_build_worker_image: Visual Studio 2019
       MSYSTEM: MINGW64
-      RUBY_VERSION: ruby-2.5
-    - job_name: windows-mingw (2.6)
-      appveyor_build_worker_image: Visual Studio 2019
-      MSYSTEM: MINGW64
-      RUBY_VERSION: ruby-2.6
-    - job_name: windows-mingw (2.7)
-      appveyor_build_worker_image: Visual Studio 2019
-      MSYSTEM: MINGW64
-      RUBY_VERSION: ruby-2.7
-    - job_name: windows-mingw (3)
-      appveyor_build_worker_image: Visual Studio 2019
-      MSYSTEM: MINGW64
-      RUBY_VERSION: ruby-3.0
     - job_name: windows-cygwin
       appveyor_build_worker_image: Visual Studio 2019
       CYGWIN_NOWINPATH: 1
@@ -63,7 +59,7 @@ for:
         - job_name: ubuntu (2.7)
         - job_name: ubuntu (3)
     test_script:
-      - sh: rvm use "$RUBY_VERSION"
+      - sh: rvm get stable && rvm use "$RUBY_VERSION"
       - sh: scripts/ci_test.sh
 
   -
@@ -74,13 +70,16 @@ for:
         - job_name: macos (2.7)
         - job_name: macos (3)
     test_script:
-      - sh: rvm use "$RUBY_VERSION"
+      - sh: rvm get stable && rvm use "$RUBY_VERSION"
       - sh: scripts/ci_test.sh
 
   -
     matrix:
       only:
-        - job_name: windows
+        - job_name: windows (2.5)
+        - job_name: windows (2.6)
+        - job_name: windows (2.7)
+        - job_name: windows (3)
     test_script:
       - cmd: set "PATH=C:\Ruby%RUBY_VERSION%\bin;%PATH%"
       - cmd: call "C:\Program Files\Git\bin\bash.exe" -l "%cd%\scripts\ci_test.sh"
@@ -88,12 +87,14 @@ for:
   -
     matrix:
       only:
-        - job_name: windows-mingw (2.5)
-        - job_name: windows-mingw (2.6)
-        - job_name: windows-mingw (2.7)
-        - job_name: windows-mingw (3)
+        - job_name: windows-mingw
+    init:
+      - cmd: >-
+          C:\msys64\usr\bin\bash -cl "
+          pacman --sync --noconfirm --needed
+          git mingw-w64-x86_64-ruby
+          "
     test_script:
-      - cmd: set "PATH=C:\Ruby%RUBY_VERSION%\bin;%PATH%"
       - cmd: C:\msys64\usr\bin\bash -l "%cd%\scripts\ci_test.sh"
 
   -
@@ -106,7 +107,7 @@ for:
           --site "https://mirrors.kernel.org/sourceware/cygwin"
           --root "C:\cygwin64"
           --local-package-dir "C:\cygwin64\var\cache\setup"
-          --packages "ruby"
+          --packages "git ruby"
     test_script:
       - cmd: set "PATH="
       - cmd: C:\cygwin64\bin\bash -l "%cd%\scripts\ci_test.sh"
