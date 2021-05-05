@@ -93,7 +93,7 @@ for:
         - job_name: windows-mingw (2.7)
         - job_name: windows-mingw (3)
     test_script:
-      - cmd: C:\msys64\usr\bin\bash -cl "rvm use \"$RUBY_VERSION\""
+      - cmd: set "PATH=C:\Ruby%RUBY_VERSION%\bin;%PATH%"
       - cmd: C:\msys64\usr\bin\bash -l "%cd%\scripts\ci_test.sh"
 
   -
