@@ -7,8 +7,6 @@ cd "$DIR"
 cd ".."
 ROOT_DIR=$(pwd)
 
-ruby -v
-
 /usr/bin/env bash -cl "\
   cd \"$ROOT_DIR\" && \
   gem install bundler --force && \
