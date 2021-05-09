@@ -53,7 +53,7 @@ jobs:
     runs-on: windows-latest
     defaults:
       run:
-        shell: cmd
+        shell: pwsh
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -68,7 +68,7 @@ jobs:
     runs-on: windows-latest
     defaults:
       run:
-        shell: msys2 "{0}"
+        shell: pwsh
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -85,7 +85,7 @@ jobs:
     runs-on: windows-latest
     defaults:
       run:
-        shell: cmd
+        shell: pwsh
     steps:
       - name: Checkout
         uses: actions/checkout@v2
