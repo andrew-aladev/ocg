@@ -78,6 +78,8 @@ jobs:
           install: git mingw-w64-x86_64-ruby
       - name: CI test
         run: C:\msys64\usr\bin\bash.exe -l "%cd%\scripts\ci_test.sh"
+        env:
+          MSYSTEM: MINGW64
 
   windows-cygwin:
     runs-on: windows-latest
