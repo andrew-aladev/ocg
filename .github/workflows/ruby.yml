@@ -94,11 +94,9 @@ jobs:
         with:
           platform: x64
           install-dir: C:\cygwin64
-          packages: git ruby
+          packages: git ruby-devel
       - name: CI test
-        run: |
-          set "PATH="
-          C:\cygwin64\bin\bash.exe -l "%cd%\scripts\ci_test.sh"
+        run: C:\cygwin64\bin\bash.exe -l "%cd%\scripts\ci_test.sh"
         env:
-          CHERE_INVOKING: 1
+          CYGWIN_NOWINPATH: 1
           SHELLOPTS: igncr
