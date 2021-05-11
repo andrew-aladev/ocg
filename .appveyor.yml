@@ -30,18 +30,6 @@ environment:
     # - job_name: macos (3)
     #   appveyor_build_worker_image: macos
     #   RUBY_VERSION: ruby-3.0
-    - job_name: windows (2.5)
-      appveyor_build_worker_image: Visual Studio 2019
-      RUBY_VERSION: 25
-    - job_name: windows (2.6)
-      appveyor_build_worker_image: Visual Studio 2019
-      RUBY_VERSION: 26
-    - job_name: windows (2.7)
-      appveyor_build_worker_image: Visual Studio 2019
-      RUBY_VERSION: 27
-    - job_name: windows (3)
-      appveyor_build_worker_image: Visual Studio 2019
-      RUBY_VERSION: 30
     - job_name: windows-mingw
       appveyor_build_worker_image: Visual Studio 2019
       MSYSTEM: MINGW64
