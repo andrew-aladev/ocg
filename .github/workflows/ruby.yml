@@ -42,28 +42,6 @@ jobs:
       - name: CI test
         run: scripts/ci_test.sh
 
-  windows:
-    strategy:
-      matrix:
-        ruby:
-          - 2.5
-          - 2.6
-          - 2.7
-          - 3.0
-    runs-on: windows-latest
-    defaults:
-      run:
-        shell: cmd
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Setup ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ matrix.ruby }}
-      - name: CI test
-        run: call "C:\Program Files\Git\bin\bash.exe" -l "%cd%\scripts\ci_test.sh"
-
   windows-mingw:
     runs-on: windows-latest
     defaults:
