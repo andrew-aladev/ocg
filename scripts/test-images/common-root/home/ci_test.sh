@@ -24,8 +24,15 @@ fi
 
 cd "$DIR"
 
-for RUBY_VERSION in "${RUBY_VERSIONS[@]}"; do
-  eselect ruby set "$RUBY_VERSION"
+# "sudo" may be required.
+if command -v "sudo" > /dev/null 2>&1; then
+  sudo_prefix="sudo"
+else
+  sudo_prefix=""
+fi
 
-  ./scripts/ci_test.sh
+for RUBY_VERSION in "${RUBY_VERSIONS[@]}"; do
+  $sudo_prefix eselect ruby set "$RUBY_VERSION"
+
+  $sudo_prefix ./scripts/ci_test.sh
 done
