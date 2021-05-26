@@ -4,9 +4,7 @@ jobs:
   build:
     docker:
       - image: puchuu/test-ocg_i686-gentoo-linux-musl:latest
-    working_directory: /mnt/data
     steps:
-      - checkout
       - run:
           command: /home/ci_test.sh
           user: root
