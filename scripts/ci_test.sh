@@ -7,7 +7,10 @@ cd "$DIR"
 cd ".."
 ROOT_DIR=$(pwd)
 
+whoami
+
 /usr/bin/env bash -cl "\
+  whoami && \
   cd \"$ROOT_DIR\" && \
   gem install bundler --force && \
   bundle install && \
