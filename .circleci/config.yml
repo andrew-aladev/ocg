@@ -7,6 +7,7 @@ jobs:
         user: root
     branches:
       only:
-        - master
+        - circleci
     steps:
+      - run: whoami
       - run: /home/ci_test.sh
