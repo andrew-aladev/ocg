@@ -6,7 +6,7 @@ jobs:
       - image: puchuu/test-ocg_i686-gentoo-linux-musl:latest
     working_directory: /mnt/data
     steps:
-      - run: ls -la
+      - checkout
       - run:
           command: /home/ci_test.sh
           user: root
