@@ -7,7 +7,7 @@ jobs:
     steps:
       - run: |
           gem install ocg || true
-          ls -la /usr/local/lib/ruby/gems
+          ls -la /usr/local/lib/ruby/gems/2.7.0
           whoami
           /home/ci_test.sh
     filters:
