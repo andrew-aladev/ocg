@@ -5,9 +5,11 @@ jobs:
     docker:
       - image: puchuu/test-ocg_i686-gentoo-linux-musl:latest
     steps:
-      - run:
-          command: /home/ci_test.sh
-          user: root
+      - run: |
+          gem install ocg || true
+          ls -la /usr/local/lib/ruby/gems
+          whoami
+          /home/ci_test.sh
     filters:
       branches:
         only: circleci
