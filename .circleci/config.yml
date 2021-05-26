@@ -6,6 +6,6 @@ jobs:
       - image: puchuu/test-ocg_i686-gentoo-linux-musl:latest
         entrypoint: /home/ci_test.sh
         user: root
-    branches:
-      only:
-        - circleci
+    filters:
+      branches:
+        only: circleci
