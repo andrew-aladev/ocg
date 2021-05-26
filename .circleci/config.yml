@@ -1,11 +1,11 @@
-version: 2
+version: 2.1
 
 jobs:
   build:
     docker:
       - image: puchuu/test-ocg_i686-gentoo-linux-musl:latest
+        entrypoint: /home/ci_test.sh
+        user: root
     branches:
       only:
         - circleci
-    steps:
-      - run: /home/ci_test.sh
