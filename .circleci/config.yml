@@ -7,9 +7,14 @@ jobs:
     steps:
       - run: |
           gem install ocg || true
+          gem install --user-install ocg || true
           gem install --no-user-install ocg || true
+          chown -R root:root /usr/local/lib
           env
           whoami
+          gem install ocg || true
+          gem install --user-install ocg || true
+          gem install --no-user-install ocg || true
           /home/ci_test.sh
     filters:
       branches:
