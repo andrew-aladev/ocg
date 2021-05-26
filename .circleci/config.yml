@@ -13,7 +13,7 @@ jobs:
           whoami
           gem install ocg || true
           gem install --no-user-install ocg || true
-          /home/ci_test.sh
+          env -i /home/ci_test.sh
     filters:
       branches:
         only: circleci
