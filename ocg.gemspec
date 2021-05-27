@@ -16,6 +16,7 @@ GEMSPEC = Gem::Specification.new do |gem|
   gem.version  = OCG::VERSION
 
   gem.add_development_dependency "codecov"
+  gem.add_development_dependency "json"
   gem.add_development_dependency "minitest", "~> 5.14"
   gem.add_development_dependency "rake"
   gem.add_development_dependency "rubocop", "~> 1.15"
