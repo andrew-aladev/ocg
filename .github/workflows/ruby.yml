@@ -57,7 +57,11 @@ jobs:
       - name: Setup msys2
         uses: msys2/setup-msys2@v2
         with:
-          install: git mingw-w64-x86_64-ruby
+          install: >-
+            git
+            make
+            mingw-w64-x86_64-gcc
+            mingw-w64-x86_64-ruby
       - name: CI test
         run: scripts/ci_test.sh
         env:
@@ -77,7 +81,7 @@ jobs:
         with:
           platform: x64
           install-dir: C:\cygwin64
-          packages: git ruby-devel
+          packages: gcc-g++ git make ruby-devel
       - name: CI test
         run: C:\cygwin64\bin\bash.exe -l "%cd%\scripts\ci_test.sh"
         env:

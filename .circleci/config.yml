@@ -3,17 +3,9 @@ version: 2
 jobs:
   build:
     docker:
-      - image: puchuu/test-ocg_i686-unknown-linux-gnu:latest
+      - image: puchuu/test-ocg_x86_64-unknown-linux-gnu:latest
     steps:
-      - run: |
-          gem install ocg || true
-          gem install --no-user-install ocg || true
-          chown -R root:root /usr/local/lib
-          env
-          whoami
-          gem install ocg || true
-          gem install --no-user-install ocg || true
-          env -i /home/ci_test.sh
+      - run: /home/ci_test.sh
     filters:
       branches:
-        only: circleci
+        only: master
