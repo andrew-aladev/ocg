@@ -4,7 +4,10 @@ jobs:
   build:
     docker:
       - image: puchuu/test-ocg_x86_64-unknown-linux-gnu:latest
+    working_directory: /mnt/data
     steps:
+      - run: git config --global url."https://github.com/".insteadOf "git@github.com:"
+      - checkout
       - run: /home/ci_test.sh
     filters:
       branches:
