@@ -9,9 +9,14 @@ jobs:
       - image: puchuu/test-ocg_x86_64-unknown-linux-gnu:latest
     working_directory: /mnt/data
     steps:
-      - shallow-clone-checkout
-        use-https: true
+      - shallow-clone-checkout:
+          use-https: true
       - run: /home/ci_test.sh
-    filters:
-      branches:
-        only: master
+
+workflows:
+  build-deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: master
