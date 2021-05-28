@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  git: ganta/git@1.2.0
+  git-shallow-clone: guitarrapc/git-shallow-clone@2.0.3
 
 jobs:
   build:
@@ -9,8 +9,7 @@ jobs:
       - image: puchuu/test-ocg_x86_64-unknown-linux-gnu:latest
     working_directory: /mnt/data
     steps:
-      - git/shallow-clone-checkout:
-          use-https: true
+      - git-shallow-clone/checkout
       - run: /home/ci_test.sh
 
 workflows:
