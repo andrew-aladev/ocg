@@ -6,10 +6,6 @@ jobs:
       - image: puchuu/test-ocg_x86_64-unknown-linux-gnu:latest
     working_directory: /mnt/data
     steps:
-      - run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan -H github.com >> ~/.ssh/known_hosts || true
-          git config --global url."https://github.com".insteadOf "ssh://git@github.com" || true
       - checkout
       - run: /home/ci_test.sh
 
