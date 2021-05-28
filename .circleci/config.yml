@@ -1,4 +1,7 @@
-version: 2
+version: 2.1
+
+orbs:
+  git: ganta/git@1.2.0
 
 jobs:
   build:
@@ -6,8 +9,8 @@ jobs:
       - image: puchuu/test-ocg_x86_64-unknown-linux-gnu:latest
     working_directory: /mnt/data
     steps:
-      - run: git config --global url."https://github.com/".insteadOf "git@github.com:"
-      - checkout
+      - shallow-clone-checkout
+        use-https: true
       - run: /home/ci_test.sh
     filters:
       branches:
