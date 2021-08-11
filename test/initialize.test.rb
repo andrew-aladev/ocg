@@ -29,7 +29,7 @@ class OCG
 
         assert_equal({ :a => 1 }, generator.next)
         assert_equal({ :a => 2 }, generator.next)
-        assert generator.next.nil?
+        assert_nil generator.next
       end
     end
 

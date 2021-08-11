@@ -14,11 +14,11 @@ class OCG
           Test.get_datas do |generator, combinations|
             generator_copy = generator.send method
 
-            assert generator.last.nil?
+            assert_nil generator.last
             refute generator.started?
             refute generator.finished?
 
-            assert generator_copy.last.nil?
+            assert_nil generator_copy.last
             refute generator_copy.started?
             refute generator_copy.finished?
 
@@ -32,7 +32,7 @@ class OCG
             assert generator.started?
             refute generator.finished?
 
-            assert generator_copy.last.nil?
+            assert_nil generator_copy.last
             refute generator_copy.started?
             refute generator_copy.finished?
 
@@ -54,7 +54,7 @@ class OCG
               assert_equal combination, generator.last
             end
 
-            assert generator.next.nil?
+            assert_nil generator.next
             assert generator.started?
             assert generator.finished?
 
@@ -69,11 +69,11 @@ class OCG
               assert_equal combination, generator_copy.last
             end
 
-            assert generator_copy.next.nil?
+            assert_nil generator_copy.next
             assert generator_copy.started?
             assert generator_copy.finished?
 
-            assert generator.next.nil?
+            assert_nil generator.next
             assert generator.started?
             assert generator.finished?
           end
@@ -90,19 +90,19 @@ class OCG
 
             assert_equal first_combination, generator.next
             assert_equal first_combination, generator.last
-            assert generator_copy.last.nil?
+            assert_nil generator_copy.last
 
             assert_equal first_combination, generator_copy.next
             assert_equal first_combination, generator_copy.last
             assert_equal first_combination, generator.last
 
             generator.reset
-            assert generator.last.nil?
+            assert_nil generator.last
             assert_equal first_combination, generator_copy.last
 
             generator_copy.reset
-            assert generator_copy.last.nil?
-            assert generator.last.nil?
+            assert_nil generator_copy.last
+            assert_nil generator.last
 
             # Reading all combinations from generators.
 
@@ -111,24 +111,24 @@ class OCG
               assert_equal combination, generator.last
             end
 
-            assert generator.next.nil?
-            assert generator_copy.last.nil?
+            assert_nil generator.next
+            assert_nil generator_copy.last
 
             combinations.each do |combination|
               assert_equal combination, generator_copy.next
               assert_equal combination, generator_copy.last
             end
 
-            assert generator.next.nil?
-            assert generator_copy.next.nil?
+            assert_nil generator.next
+            assert_nil generator_copy.next
 
             generator.reset
-            assert generator.last.nil?
-            assert generator_copy.next.nil?
+            assert_nil generator.last
+            assert_nil generator_copy.next
 
             generator_copy.reset
-            assert generator.last.nil?
-            assert generator_copy.last.nil?
+            assert_nil generator.last
+            assert_nil generator_copy.last
           end
         end
       end

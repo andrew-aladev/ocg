@@ -60,7 +60,7 @@ class OCG
             process_method generator, combinations, method
 
             assert generator.finished?
-            assert generator.next.nil?
+            assert_nil generator.next
 
             generator.reset
           end

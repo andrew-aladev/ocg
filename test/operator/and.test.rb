@@ -34,7 +34,7 @@ class OCG
           assert_equal({ :a => 1, :b => 4 }, generator.next)
           assert_equal({ :a => 2, :b => 3 }, generator.next)
           assert_equal({ :a => 2, :b => 4 }, generator.next)
-          assert generator.next.nil?
+          assert_nil generator.next
         end
 
         def test_after_started
@@ -49,7 +49,7 @@ class OCG
           assert_equal({ :a => 1, :b => 4 }, generator.next)
           assert_equal({ :a => 2, :b => 3 }, generator.next)
           assert_equal({ :a => 2, :b => 4 }, generator.next)
-          assert generator.next.nil?
+          assert_nil generator.next
         end
       end
 

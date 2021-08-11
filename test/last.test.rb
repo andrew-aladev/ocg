@@ -9,7 +9,7 @@ class OCG
     class Last < Minitest::Test
       def test_basic
         Test.get_datas do |generator, combinations|
-          assert generator.last.nil?
+          assert_nil generator.last
 
           combinations.each do |combination|
             assert_equal combination, generator.next
@@ -22,7 +22,7 @@ class OCG
 
       def test_after_reset
         Test.get_datas do |generator, combinations|
-          assert generator.last.nil?
+          assert_nil generator.last
 
           assert_equal combinations[0], generator.next
           assert_equal combinations[0], generator.last

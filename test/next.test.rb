@@ -13,7 +13,7 @@ class OCG
             assert_equal combination, generator.next
           end
 
-          assert generator.next.nil?
+          assert_nil generator.next
         end
       end
 
@@ -27,7 +27,7 @@ class OCG
             assert_equal combination, generator.next
           end
 
-          assert generator.next.nil?
+          assert_nil generator.next
         end
       end
     end
