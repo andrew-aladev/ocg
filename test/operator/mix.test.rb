@@ -14,7 +14,7 @@ class OCG
         def test_invalid
           generator = OCG.new :a => 1..2
 
-          (Validation::INVALID_HASHES + [{}]).each do |invalid_options|
+          Validation::INVALID_HASHES.each do |invalid_options|
             assert_raises ValidateError do
               generator.mix invalid_options
             end

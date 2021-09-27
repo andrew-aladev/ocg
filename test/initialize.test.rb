@@ -11,7 +11,7 @@ class OCG
   module Test
     class Initialize < Minitest::Test
       def test_invalid
-        (Validation::INVALID_HASHES + [{}]).each do |invalid_options|
+        Validation::INVALID_HASHES.each do |invalid_options|
           assert_raises ValidateError do
             OCG.new invalid_options
           end
@@ -25,8 +25,10 @@ class OCG
       end
 
       def test_basic
-        generator = OCG.new :a => 1..2
+        generator = OCG.new
+        assert_nil generator.next
 
+        generator = OCG.new :a => 1..2
         assert_equal({ :a => 1 }, generator.next)
         assert_equal({ :a => 2 }, generator.next)
         assert_nil generator.next

@@ -82,7 +82,7 @@ Options should be prepared in the following form:
 }
 ```
 
-Options hash should not be empty.
+Options hash may be empty.
 `option_name` can be any valid hash key.
 `option_values` should be convertable to array using `to_a`.
 `option_values` should not be empty.

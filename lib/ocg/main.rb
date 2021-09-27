@@ -17,7 +17,7 @@ class OCG
 
   def_delegators :@generator, *DELEGATORS
 
-  def initialize(generator_or_options)
+  def initialize(generator_or_options = {})
     @generator = self.class.prepare_generator generator_or_options
   end
 
@@ -27,15 +27,15 @@ class OCG
     Options.new generator_or_options
   end
 
-  def and(generator_or_options)
+  def and(generator_or_options = {})
     Operator::AND.new self, generator_or_options
   end
 
-  def mix(generator_or_options)
+  def mix(generator_or_options = {})
     Operator::MIX.new self, generator_or_options
   end
 
-  def or(generator_or_options)
+  def or(generator_or_options = {})
     Operator::OR.new self, generator_or_options
   end
 

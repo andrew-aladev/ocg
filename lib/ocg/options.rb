@@ -21,7 +21,7 @@ class OCG
 
       reset_value_indexes
 
-      @is_finished = false
+      @is_finished = length.zero?
     end
 
     protected def reset_value_indexes
@@ -36,7 +36,7 @@ class OCG
       # If state is finished than all value indexes are already zero.
       reset_value_indexes unless @is_finished
 
-      @is_finished = false
+      @is_finished = length.zero?
 
       nil
     end
@@ -76,7 +76,13 @@ class OCG
     end
 
     def length
-      @options.reduce(1) { |length, (_name, values)| length * values.length }
+      @options.reduce(0) do |length, (_name, values)|
+        if length.zero?
+          values.length
+        else
+          length * values.length
+        end
+      end
     end
   end
 end

@@ -17,13 +17,13 @@ class OCG
       end
 
       def last
-        left_last  = @left_generator.last
-        right_last = @right_generator.last
+        left  = @left_generator.last
+        right = @right_generator.last
 
-        if right_last.nil?
-          left_last
+        if right.nil?
+          left
         else
-          right_last
+          right
         end
       end
 

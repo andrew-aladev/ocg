@@ -32,16 +32,22 @@ class OCG
 
         @left_generator.reset if @left_generator.finished?
         @right_generator.reset if @right_generator.finished?
-        @left_generator.next.merge @right_generator.next
+
+        left  = @left_generator.next
+        right = @right_generator.next
+
+        return nil if left.nil? || right.nil?
+
+        left.merge right
       end
 
       def last
-        left_last  = @left_generator.last
-        right_last = @right_generator.last
+        left  = @left_generator.last
+        right = @right_generator.last
 
-        return nil if left_last.nil? || right_last.nil?
+        return nil if left.nil? || right.nil?
 
-        left_last.merge right_last
+        left.merge right
       end
 
       def started?
