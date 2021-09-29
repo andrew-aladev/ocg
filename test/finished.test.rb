@@ -9,10 +9,10 @@ class OCG
     class Finished < Minitest::Test
       def test_basic
         Test.get_datas do |generator, combinations|
-          refute generator.finished?
+          test_not_finished generator, combinations
 
           combinations.each do |combination|
-            assert_equal combination, generator.next
+            assert_equal generator.next, combination
           end
 
           assert generator.finished?
@@ -21,28 +21,40 @@ class OCG
 
       def test_after_reset
         Test.get_datas do |generator, combinations|
-          refute generator.finished?
+          test_not_finished generator, combinations
 
-          assert_equal combinations[0], generator.next
-          refute generator.finished?
+          test_first_item generator, combinations
 
-          generator.reset
-          refute generator.finished?
+          # First reset calls after first combination.
+          # Second reset calls after all combinations.
+          2.times do
+            generator.reset
+            test_not_finished generator, combinations
 
-          combinations.each do |combination|
-            assert_equal combination, generator.next
+            combinations.each do |combination|
+              assert_equal generator.next, combination
+            end
+
+            assert generator.finished?
           end
+        end
+      end
 
+      protected def test_first_item(generator, combinations)
+        if combinations.empty?
+          assert_nil generator.next
           assert generator.finished?
-
-          generator.reset
+        else
+          assert_equal generator.next, combinations[0]
           refute generator.finished?
+        end
+      end
 
-          combinations.each do |combination|
-            assert_equal combination, generator.next
-          end
-
+      protected def test_not_finished(generator, combinations)
+        if combinations.empty?
           assert generator.finished?
+        else
+          refute generator.finished?
         end
       end
     end

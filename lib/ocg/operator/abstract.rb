@@ -22,6 +22,16 @@ class OCG
         nil
       end
 
+      protected def merge_results(left, right)
+        if left.nil?
+          right
+        elsif right.nil?
+          left
+        else
+          left.merge right
+        end
+      end
+
       # :nocov:
       def next
         raise NotImplementedError, "\"next\" is not implemented"

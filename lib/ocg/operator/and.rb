@@ -19,18 +19,14 @@ class OCG
 
         right = @right_generator.next
 
-        return nil if left.nil? || right.nil?
-
-        left.merge right
+        merge_results left, right
       end
 
       def last
         left  = @left_generator.last
         right = @right_generator.last
 
-        return nil if left.nil? || right.nil?
-
-        left.merge right
+        merge_results left, right
       end
 
       def started?
@@ -42,7 +38,16 @@ class OCG
       end
 
       def length
-        @left_generator.length * @right_generator.length
+        left_length  = @left_generator.length
+        right_length = @right_generator.length
+
+        if left_length.zero?
+          right_length
+        elsif right_length.zero?
+          left_length
+        else
+          left_length * right_length
+        end
       end
     end
   end

@@ -9,7 +9,7 @@ class OCG
     class Length < Minitest::Test
       def test_length
         Test.get_datas do |generator, combinations|
-          assert_equal combinations.length, generator.length
+          assert_equal generator.length, combinations.length
         end
       end
     end

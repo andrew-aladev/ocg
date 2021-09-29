@@ -12,11 +12,11 @@ class OCG
           refute generator.started?
 
           combinations.each do |combination|
-            assert_equal combination, generator.next
-            assert generator.started?
+            assert_equal generator.next, combination
+            test_started generator, combinations
           end
 
-          assert generator.started?
+          test_started generator, combinations
         end
       end
 
@@ -24,27 +24,38 @@ class OCG
         Test.get_datas do |generator, combinations|
           refute generator.started?
 
-          assert_equal combinations[0], generator.next
-          assert generator.started?
+          test_first_item generator, combinations
 
-          generator.reset
-          refute generator.started?
+          # First reset calls after first combination.
+          # Second reset calls after all combinations.
+          2.times do
+            generator.reset
+            refute generator.started?
 
-          combinations.each do |combination|
-            assert_equal combination, generator.next
-            assert generator.started?
+            combinations.each do |combination|
+              assert_equal generator.next, combination
+              test_started generator, combinations
+            end
+
+            test_started generator, combinations
           end
+        end
+      end
 
-          assert generator.started?
-
-          generator.reset
+      protected def test_started(generator, combinations)
+        if combinations.empty?
           refute generator.started?
+        else
+          assert generator.started?
+        end
+      end
 
-          combinations.each do |combination|
-            assert_equal combination, generator.next
-            assert generator.started?
-          end
-
+      protected def test_first_item(generator, combinations)
+        if combinations.empty?
+          assert_nil generator.next
+          refute generator.started?
+        else
+          assert_equal generator.next, combinations[0]
           assert generator.started?
         end
       end

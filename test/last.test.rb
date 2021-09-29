@@ -12,11 +12,11 @@ class OCG
           assert_nil generator.last
 
           combinations.each do |combination|
-            assert_equal combination, generator.next
-            assert_equal combination, generator.last
+            assert_equal generator.next, combination
+            assert_equal generator.last, combination
           end
 
-          assert_equal combinations.last, generator.last
+          test_last_item generator, combinations
         end
       end
 
@@ -24,17 +24,34 @@ class OCG
         Test.get_datas do |generator, combinations|
           assert_nil generator.last
 
-          assert_equal combinations[0], generator.next
-          assert_equal combinations[0], generator.last
+          test_first_item generator, combinations
 
           generator.reset
 
           combinations.each do |combination|
-            assert_equal combination, generator.next
-            assert_equal combination, generator.last
+            assert_equal generator.next, combination
+            assert_equal generator.last, combination
           end
 
-          assert_equal combinations.last, generator.last
+          test_last_item generator, combinations
+        end
+      end
+
+      protected def test_first_item(generator, combinations)
+        if combinations.empty?
+          assert_nil generator.next
+          assert_nil generator.last
+        else
+          assert_equal generator.next, combinations[0]
+          assert_equal generator.last, combinations[0]
+        end
+      end
+
+      protected def test_last_item(generator, combinations)
+        if combinations.empty?
+          assert_nil generator.last
+        else
+          assert_equal generator.last, combinations.last
         end
       end
     end

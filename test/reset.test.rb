@@ -13,18 +13,19 @@ class OCG
 
           generator.reset
           assert_nil generator.last
-          assert_equal combinations[0], generator.next
+          test_first_item generator, combinations
         end
       end
 
       def test_before_finished
         Test.get_datas do |generator, combinations|
           assert_nil generator.last
-          assert_equal combinations[0], generator.next
+
+          test_first_item generator, combinations
 
           generator.reset
           assert_nil generator.last
-          assert_equal combinations[0], generator.next
+          test_first_item generator, combinations
         end
       end
 
@@ -33,12 +34,20 @@ class OCG
           assert_nil generator.last
 
           combinations.each do |combination|
-            assert_equal combination, generator.next
+            assert_equal generator.next, combination
           end
 
           generator.reset
           assert_nil generator.last
-          assert_equal combinations[0], generator.next
+          test_first_item generator, combinations
+        end
+      end
+
+      protected def test_first_item(generator, combinations)
+        if combinations.empty?
+          assert_nil generator.next
+        else
+          assert_equal generator.next, combinations[0]
         end
       end
     end

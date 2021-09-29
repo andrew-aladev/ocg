@@ -200,11 +200,24 @@ class OCG
       [generator, combinations]
     end
 
-    def self.get_datas(&_block)
+    def self.get_datas_with_empty(&_block)
+      yield [OCG.new, []]
+
+      generator, combinations = get_data
+
+      %i[or and mix].each do |method|
+        yield [OCG.new.send(method, generator), combinations]
+        yield [generator.send(method, OCG.new), combinations]
+      end
+    end
+
+    def self.get_datas(&block)
       yield get_data
       yield get_data_rotated_around_or
       yield get_data_rotated_around_and
       yield get_data_rotated_around_mix
+
+      get_datas_with_empty(&block)
     end
 
     private_class_method def self.get_option_combinations(options)

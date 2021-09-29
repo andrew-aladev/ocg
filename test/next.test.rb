@@ -10,7 +10,7 @@ class OCG
       def test_basic
         Test.get_datas do |generator, combinations|
           combinations.each do |combination|
-            assert_equal combination, generator.next
+            assert_equal generator.next, combination
           end
 
           assert_nil generator.next
@@ -19,15 +19,23 @@ class OCG
 
       def test_after_reset
         Test.get_datas do |generator, combinations|
-          assert_equal combinations[0], generator.next
+          test_first_item generator, combinations
 
           generator.reset
 
           combinations.each do |combination|
-            assert_equal combination, generator.next
+            assert_equal generator.next, combination
           end
 
           assert_nil generator.next
+        end
+      end
+
+      protected def test_first_item(generator, combinations)
+        if combinations.empty?
+          assert_nil generator.next
+        else
+          assert_equal generator.next, combinations[0]
         end
       end
     end
