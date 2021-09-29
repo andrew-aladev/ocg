@@ -12,7 +12,7 @@ class OCG
     module Operator
       class AND < Minitest::Test
         def test_invalid
-          generator = OCG.new :a => 1..2
+          generator = OCG.new
 
           Validation::INVALID_HASHES.each do |invalid_options|
             assert_raises ValidateError do
@@ -22,14 +22,23 @@ class OCG
 
           (Validation::INVALID_ARRAYS + [[]]).each do |invalid_arrays|
             assert_raises ValidateError do
-              generator.and :b => invalid_arrays
+              generator.and :a => invalid_arrays
             end
           end
         end
 
         def test_basic
-          generator = OCG.new(:a => 1..2).and :b => 3..4
+          generator = OCG.new(:a => 1..2).and
+          assert_equal({ :a => 1 }, generator.next)
+          assert_equal({ :a => 2 }, generator.next)
+          assert_nil generator.next
 
+          generator = OCG.new.and(:b => 3..4)
+          assert_equal({ :b => 3 }, generator.next)
+          assert_equal({ :b => 4 }, generator.next)
+          assert_nil generator.next
+
+          generator = OCG.new(:a => 1..2).and :b => 3..4
           assert_equal({ :a => 1, :b => 3 }, generator.next)
           assert_equal({ :a => 1, :b => 4 }, generator.next)
           assert_equal({ :a => 2, :b => 3 }, generator.next)
@@ -38,13 +47,22 @@ class OCG
         end
 
         def test_after_started
-          generator = OCG.new :a => 1..2
+          generator = OCG.new
+          assert_nil generator.next
+          refute generator.started?
+
+          generator = generator.and :a => 1..2
+          refute generator.started?
+          assert_equal({ :a => 1 }, generator.next)
+          assert generator.started?
+
+          generator = generator.and
+          refute generator.started?
           assert_equal({ :a => 1 }, generator.next)
           assert generator.started?
 
           generator = generator.and :b => 3..4
           refute generator.started?
-
           assert_equal({ :a => 1, :b => 3 }, generator.next)
           assert_equal({ :a => 1, :b => 4 }, generator.next)
           assert_equal({ :a => 2, :b => 3 }, generator.next)

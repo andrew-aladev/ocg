@@ -14,53 +14,43 @@ class OCG
           Test.get_datas do |generator, combinations|
             generator_copy = generator.send method
 
-            assert_nil generator.last
-            refute generator.started?
-            refute generator.finished?
-
-            assert_nil generator_copy.last
-            refute generator_copy.started?
-            refute generator_copy.finished?
+            test_option generator, combinations, nil
+            test_option generator_copy, combinations, nil
 
             first_combination  = combinations[0]
-            other_combinations = combinations[1..-1]
+            other_combinations = combinations[1..-1] || []
 
             # Reading first combination from initial generator.
 
-            assert_equal first_combination, generator.next
-            assert_equal first_combination, generator.last
-            assert generator.started?
-            refute generator.finished?
+            if first_combination.nil?
+              assert_nil generator.next
+            else
+              assert_equal generator.next, first_combination
+            end
 
-            assert_nil generator_copy.last
-            refute generator_copy.started?
-            refute generator_copy.finished?
+            test_option generator, combinations, 0
+            test_option generator_copy, combinations, nil
 
             # Reading first combination from generator copy.
 
-            assert_equal first_combination, generator_copy.next
-            assert_equal first_combination, generator_copy.last
-            assert generator_copy.started?
-            refute generator_copy.finished?
+            if first_combination.nil?
+              assert_nil generator_copy.next
+            else
+              assert_equal generator_copy.next, first_combination
+            end
 
-            assert_equal first_combination, generator.last
-            assert generator.started?
-            refute generator.finished?
+            test_option generator, combinations, 0
+            test_option generator_copy, combinations, 0
 
             # Reading other combinations from initial generator.
 
             other_combinations.each do |combination|
-              assert_equal combination, generator.next
-              assert_equal combination, generator.last
+              assert_equal generator.next, combination
+              assert_equal generator.last, combination
             end
 
-            assert_nil generator.next
-            assert generator.started?
-            assert generator.finished?
-
-            assert_equal first_combination, generator_copy.last
-            assert generator_copy.started?
-            refute generator_copy.finished?
+            test_option generator, combinations, combinations.length
+            test_option generator_copy, combinations, 0
 
             # Reading other combinations from generator copy.
 
@@ -69,13 +59,8 @@ class OCG
               assert_equal combination, generator_copy.last
             end
 
-            assert_nil generator_copy.next
-            assert generator_copy.started?
-            assert generator_copy.finished?
-
-            assert_nil generator.next
-            assert generator.started?
-            assert generator.finished?
+            test_option generator, combinations, combinations.length
+            test_option generator_copy, combinations, combinations.length
           end
         end
       end
@@ -83,52 +68,57 @@ class OCG
       def test_reset
         METHODS.each do |method|
           Test.get_datas do |generator, combinations|
-            generator_copy    = generator.send method
+            generator_copy = generator.send method
+
+            test_option generator, combinations, nil
+            test_option generator_copy, combinations, nil
+
             first_combination = combinations[0]
 
             # Reading first combination from generators.
 
-            assert_equal first_combination, generator.next
-            assert_equal first_combination, generator.last
-            assert_nil generator_copy.last
+            if first_combination.nil?
+              assert_nil generator.next
+              assert_nil generator_copy.next
+            else
+              assert_equal generator.next, first_combination
+              assert_equal generator_copy.next, first_combination
+            end
 
-            assert_equal first_combination, generator_copy.next
-            assert_equal first_combination, generator_copy.last
-            assert_equal first_combination, generator.last
+            test_option generator, combinations, 0
+            test_option generator_copy, combinations, 0
 
             generator.reset
-            assert_nil generator.last
-            assert_equal first_combination, generator_copy.last
+
+            test_option generator, combinations, nil
+            test_option generator_copy, combinations, 0
 
             generator_copy.reset
-            assert_nil generator_copy.last
-            assert_nil generator.last
+
+            test_option generator, combinations, nil
+            test_option generator_copy, combinations, nil
 
             # Reading all combinations from generators.
 
             combinations.each do |combination|
-              assert_equal combination, generator.next
-              assert_equal combination, generator.last
+              assert_equal generator.next, combination
+              assert_equal generator.last, combination
+              assert_equal generator_copy.next, combination
+              assert_equal generator_copy.last, combination
             end
 
-            assert_nil generator.next
-            assert_nil generator_copy.last
-
-            combinations.each do |combination|
-              assert_equal combination, generator_copy.next
-              assert_equal combination, generator_copy.last
-            end
-
-            assert_nil generator.next
-            assert_nil generator_copy.next
+            test_option generator, combinations, combinations.length
+            test_option generator_copy, combinations, combinations.length
 
             generator.reset
-            assert_nil generator.last
-            assert_nil generator_copy.next
+
+            test_option generator, combinations, nil
+            test_option generator_copy, combinations, combinations.length
 
             generator_copy.reset
-            assert_nil generator.last
-            assert_nil generator_copy.last
+
+            test_option generator, combinations, nil
+            test_option generator_copy, combinations, nil
           end
         end
       end
@@ -146,6 +136,49 @@ class OCG
             frozen_generator_copy = frozen_generator.send method
 
             assert_equal method == :clone, frozen_generator_copy.frozen?
+          end
+        end
+      end
+
+      protected def test_option(generator, combinations, index)
+        if index.nil?
+          assert_nil generator.last
+          refute generator.started?
+
+          if combinations.empty?
+            assert generator.finished?
+          else
+            refute generator.finished?
+          end
+        elsif index >= combinations.length
+          last_combination = combinations.last
+          if last_combination.nil?
+            assert_nil generator.last
+          else
+            assert_equal generator.last, last_combination
+          end
+
+          if combinations.empty?
+            refute generator.started?
+          else
+            assert generator.started?
+          end
+
+          assert generator.finished?
+        else
+          combination = combinations[index]
+          if combination.nil?
+            assert_nil generator.last
+          else
+            assert_equal generator.last, combination
+          end
+
+          assert generator.started?
+
+          if index + 1 < combinations.length
+            refute generator.finished?
+          else
+            assert generator.finished?
           end
         end
       end

@@ -35,11 +35,11 @@ class OCG
       def test_after_started
         Test.get_datas do |generator, combinations|
           METHODS.each do |method|
-            test_first_item generator, combinations
+            test_first_option generator, combinations
 
             process_method generator, combinations, method
 
-            test_second_item generator, combinations
+            test_second_option generator, combinations
 
             generator.reset
           end
@@ -65,7 +65,7 @@ class OCG
         end
       end
 
-      protected def test_first_item(generator, combinations)
+      protected def test_first_option(generator, combinations)
         if combinations.empty?
           assert_nil generator.next
           refute generator.started?
@@ -75,7 +75,7 @@ class OCG
         end
       end
 
-      protected def test_second_item(generator, combinations)
+      protected def test_second_option(generator, combinations)
         if combinations.empty?
           refute generator.started?
           assert_nil generator.next

@@ -16,7 +16,7 @@ class OCG
             assert_equal generator.last, combination
           end
 
-          test_last_item generator, combinations
+          test_last_option generator, combinations
         end
       end
 
@@ -24,7 +24,7 @@ class OCG
         Test.get_datas do |generator, combinations|
           assert_nil generator.last
 
-          test_first_item generator, combinations
+          test_first_option generator, combinations
 
           generator.reset
 
@@ -33,11 +33,11 @@ class OCG
             assert_equal generator.last, combination
           end
 
-          test_last_item generator, combinations
+          test_last_option generator, combinations
         end
       end
 
-      protected def test_first_item(generator, combinations)
+      protected def test_first_option(generator, combinations)
         if combinations.empty?
           assert_nil generator.next
           assert_nil generator.last
@@ -47,7 +47,7 @@ class OCG
         end
       end
 
-      protected def test_last_item(generator, combinations)
+      protected def test_last_option(generator, combinations)
         if combinations.empty?
           assert_nil generator.last
         else

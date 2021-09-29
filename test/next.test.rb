@@ -19,7 +19,7 @@ class OCG
 
       def test_after_reset
         Test.get_datas do |generator, combinations|
-          test_first_item generator, combinations
+          test_first_option generator, combinations
 
           generator.reset
 
@@ -31,7 +31,7 @@ class OCG
         end
       end
 
-      protected def test_first_item(generator, combinations)
+      protected def test_first_option(generator, combinations)
         if combinations.empty?
           assert_nil generator.next
         else

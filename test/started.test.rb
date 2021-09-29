@@ -24,7 +24,7 @@ class OCG
         Test.get_datas do |generator, combinations|
           refute generator.started?
 
-          test_first_item generator, combinations
+          test_first_option generator, combinations
 
           # First reset calls after first combination.
           # Second reset calls after all combinations.
@@ -50,7 +50,7 @@ class OCG
         end
       end
 
-      protected def test_first_item(generator, combinations)
+      protected def test_first_option(generator, combinations)
         if combinations.empty?
           assert_nil generator.next
           refute generator.started?
