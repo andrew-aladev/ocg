@@ -53,11 +53,11 @@ class OCG
               assert_equal generator.next, combination
             end
 
-            assert generator.finished?
+            assert_predicate generator, :finished?
 
             process_method generator, combinations, method
 
-            assert generator.finished?
+            assert_predicate generator, :finished?
             assert_nil generator.next
 
             generator.reset
@@ -68,19 +68,19 @@ class OCG
       protected def test_first_option(generator, combinations)
         if combinations.empty?
           assert_nil generator.next
-          refute generator.started?
+          refute_predicate generator, :started?
         else
           assert_equal generator.next, combinations[0]
-          assert generator.started?
+          assert_predicate generator, :started?
         end
       end
 
       protected def test_second_option(generator, combinations)
         if combinations.empty?
-          refute generator.started?
+          refute_predicate generator, :started?
           assert_nil generator.next
         else
-          assert generator.started?
+          assert_predicate generator, :started?
           assert_equal generator.next, combinations[1]
         end
       end

@@ -143,12 +143,12 @@ class OCG
       protected def test_option(generator, combinations, index)
         if index.nil?
           assert_nil generator.last
-          refute generator.started?
+          refute_predicate generator, :started?
 
           if combinations.empty?
-            assert generator.finished?
+            assert_predicate generator, :finished?
           else
-            refute generator.finished?
+            refute_predicate generator, :finished?
           end
         elsif index >= combinations.length
           last_combination = combinations.last
@@ -159,12 +159,12 @@ class OCG
           end
 
           if combinations.empty?
-            refute generator.started?
+            refute_predicate generator, :started?
           else
-            assert generator.started?
+            assert_predicate generator, :started?
           end
 
-          assert generator.finished?
+          assert_predicate generator, :finished?
         else
           combination = combinations[index]
           if combination.nil?
@@ -173,12 +173,12 @@ class OCG
             assert_equal generator.last, combination
           end
 
-          assert generator.started?
+          assert_predicate generator, :started?
 
           if index + 1 < combinations.length
-            refute generator.finished?
+            refute_predicate generator, :finished?
           else
-            assert generator.finished?
+            assert_predicate generator, :finished?
           end
         end
       end

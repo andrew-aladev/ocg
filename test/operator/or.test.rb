@@ -49,20 +49,20 @@ class OCG
         def test_after_started
           generator = OCG.new
           assert_nil generator.next
-          refute generator.started?
+          refute_predicate generator, :started?
 
           generator = generator.or :a => 1..2
-          refute generator.started?
+          refute_predicate generator, :started?
           assert_equal({ :a => 1 }, generator.next)
-          assert generator.started?
+          assert_predicate generator, :started?
 
           generator = generator.or
-          refute generator.started?
+          refute_predicate generator, :started?
           assert_equal({ :a => 1 }, generator.next)
-          assert generator.started?
+          assert_predicate generator, :started?
 
           generator = generator.or :b => 3..4
-          refute generator.started?
+          refute_predicate generator, :started?
           assert_equal({ :a => 1 }, generator.next)
           assert_equal({ :a => 2 }, generator.next)
           assert_equal({ :b => 3 }, generator.next)
