@@ -44,7 +44,7 @@ class OCG
     def next
       return nil if @is_finished
 
-      @last_options = @value_indexes.map { |name, value_index| [name, @options[name][value_index]] }.to_h
+      @last_options = @value_indexes.to_h { |name, value_index| [name, @options[name][value_index]] }
 
       @is_finished = @keys.all? do |name|
         values          = @options[name]

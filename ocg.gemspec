@@ -33,5 +33,5 @@ GEMSPEC = Gem::Specification.new do |gem|
     %w[AUTHORS LICENSE README.md]
   gem.require_paths = %w[lib]
 
-  gem.required_ruby_version = ">= 2.5"
+  gem.required_ruby_version = ">= 2.6"
 end

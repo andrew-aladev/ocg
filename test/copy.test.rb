@@ -18,7 +18,7 @@ class OCG
             test_option generator_copy, combinations, nil
 
             first_combination  = combinations[0]
-            other_combinations = combinations[1..-1] || []
+            other_combinations = combinations[1..] || []
 
             # Reading first combination from initial generator.
 
