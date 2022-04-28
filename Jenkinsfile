@@ -1,7 +1,7 @@
 pipeline {
     agent { docker { image "puchuu/test-compression_i686-gentoo-linux-musl:latest" } }
     stages {
-        stage("build") {
+        stage("ci_test") {
             when {
                 branch "master"
             }
