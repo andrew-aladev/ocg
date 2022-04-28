@@ -3,9 +3,7 @@ pipeline {
     stages {
         stage("ci_test") {
             steps {
-                dir("/mnt/data") {
-                    sh "scripts/test-images/ci_test.sh"
-                }
+                sh "scripts/test-images/ci_test.sh"
             }
         }
     }
