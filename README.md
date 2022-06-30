@@ -50,6 +50,8 @@ It will populate all option combinations.
 
 ## Docs
 
+Please review [rdoc generated docs](https://andrew-aladev.github.io/ocg).
+
 `OCG.new options` will prepare a generator.
 It will provide all possible option combinations.
 
