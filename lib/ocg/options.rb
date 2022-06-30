@@ -5,11 +5,15 @@ require_relative "copyable"
 require_relative "validation"
 
 class OCG
+  # OCG::Options class.
   class Options
     include Copyable
 
+    # Current variables to be copied.
     VARIABLES_TO_COPY = %i[options keys last_options value_indexes].freeze
 
+    # Initializes options using +options+ values.
+    # +options+ is a hash with values convertable to array.
     def initialize(options)
       Validation.validate_options options
       @options = options.transform_values(&:to_a)
@@ -24,10 +28,12 @@ class OCG
       @is_finished = length.zero?
     end
 
+    # Resets internal value indexes.
     protected def reset_value_indexes
       @value_indexes = @options.transform_values { |_values| 0 }
     end
 
+    # Resets current option combinations state.
     def reset
       return nil unless started?
 
@@ -41,6 +47,7 @@ class OCG
       nil
     end
 
+    # Get next option combination.
     def next
       return nil if @is_finished
 
@@ -63,18 +70,22 @@ class OCG
       @last_options
     end
 
+    # Get last option combination.
     def last
       @last_options
     end
 
+    # Is option combinations generation started?
     def started?
       !@last_options.nil?
     end
 
+    # Is option combinations generation finished?
     def finished?
       @is_finished
     end
 
+    # Get option combinations length.
     def length
       @options.reduce(0) do |length, (_name, values)|
         if length.zero?

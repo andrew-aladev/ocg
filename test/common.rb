@@ -3,6 +3,8 @@
 
 require "ocg"
 
+require_relative "coverage_helper"
+
 class OCG
   module Test
     def self.get_data

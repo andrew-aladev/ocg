@@ -5,9 +5,12 @@ require_relative "../error"
 
 class OCG
   module Operator
+    # OCG::Operator::Abstract class.
     class Abstract < OCG
       VARIABLES_TO_COPY = %i[left_generator right_generator].freeze
 
+      # Initializes operator using +left_generator_or_options+ and +right_generator_or_options+.
+      # Internaly object initializes left and right generators.
       def initialize(left_generator_or_options, right_generator_or_options) # rubocop:disable Lint/MissingSuper
         @left_generator  = OCG.prepare_generator left_generator_or_options
         @right_generator = OCG.prepare_generator right_generator_or_options
@@ -15,6 +18,7 @@ class OCG
         reset
       end
 
+      # Resets left and right generators specifically for options.
       def reset
         @left_generator.reset
         @right_generator.reset
@@ -22,6 +26,7 @@ class OCG
         nil
       end
 
+      # Merges results specifically for options.
       protected def merge_results(left, right)
         if left.nil?
           right

@@ -5,7 +5,9 @@ require_relative "abstract"
 
 class OCG
   module Operator
+    # OCG::Operator::AND class.
     class AND < Abstract
+      # Get next option combination result.
       def next
         return nil if finished?
 
@@ -22,6 +24,7 @@ class OCG
         merge_results left, right
       end
 
+      # Get last option combination result.
       def last
         left  = @left_generator.last
         right = @right_generator.last
@@ -29,14 +32,17 @@ class OCG
         merge_results left, right
       end
 
-      def started?
-        @left_generator.started? || @right_generator.started?
-      end
-
+      # Is option combinations generation finished?
       def finished?
         @left_generator.finished? && @right_generator.finished?
       end
 
+      # Is option combinations generation started?
+      def started?
+        @left_generator.started? || @right_generator.started?
+      end
+
+      # Get options combination length.
       def length
         left_length  = @left_generator.length
         right_length = @right_generator.length

@@ -6,7 +6,7 @@
 
 ## Installation
 
-Operating systems: GNU/Linux, OSX, FreeBSD, Windows.
+Operating systems: GNU/Linux, OSX, FreeBSD.
 
 ```sh
 gem install ocg

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>README - OCG rdoc</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+<div class="nav-section">
+  <h3>Table of Contents</h3>
+
+  <ul class="link-list" role="directory">
+    <li><a href="#label-Option+combination+generator">Option combination generator</a>
+    <li><a href="#label-Installation">Installation</a>
+    <li><a href="#label-Usage">Usage</a>
+    <li><a href="#label-Docs">Docs</a>
+    <li><a href="#label-Why-3F">Why?</a>
+    <li><a href="#label-CI">CI</a>
+    <li><a href="#label-License">License</a>
+  </ul>
+</div>
+
+
+  <div id="project-metadata">
+    
+<div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+    <li><a href="./AUTHORS.html">AUTHORS</a>
+    <li><a href="./LICENSE.html">LICENSE</a>
+    <li><a href="./README_md.html">README</a>
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page README.md">
+
+<h1 id="label-Option+combination+generator">Option combination generator<span><a href="#label-Option+combination+generator">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>| AppVeyor | Jenkins | Github Actions | Codecov | Gem | | :——: | :—–: | :————: | :—–: | :-: | | <a href="https://ci.appveyor.com/project/andrew-aladev/ocg/branch/master"><img src="https://ci.appveyor.com/api/projects/status/github/andrew-aladev/ocg?branch=master&svg=true"></a> | <a href="http://37.187.122.190:58182/job/ocg"><img src="http://37.187.122.190:58182/buildStatus/icon?job=ocg"></a> | <a href="https://github.com/andrew-aladev/ocg/actions"><img src="https://github.com/andrew-aladev/ocg/workflows/test/badge.svg?branch=master"></a> | <a href="https://codecov.io/gh/andrew-aladev/ocg"><img src="https://codecov.io/gh/andrew-aladev/ocg/branch/master/graph/badge.svg"></a> | <a href="https://rubygems.org/gems/ocg"><img src="https://img.shields.io/gem/v/ocg.svg"></a> |</p>
+
+<h2 id="label-Installation">Installation<span><a href="#label-Installation">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Operating systems: GNU/Linux, OSX, FreeBSD.</p>
+
+<pre class="ruby"><span class="ruby-identifier">gem</span> <span class="ruby-identifier">install</span> <span class="ruby-identifier">ocg</span>
+</pre>
+
+<p>You can build it from source.</p>
+
+<pre>rake gem
+gem install pkg/ocg-*.gem</pre>
+
+<p>You can also use <a href="https://github.com/andrew-aladev/overlay">overlay</a> for gentoo.</p>
+
+<h2 id="label-Usage">Usage<span><a href="#label-Usage">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">&quot;ocg&quot;</span>
+
+<span class="ruby-identifier">generator</span> = <span class="ruby-constant">OCG</span>.<span class="ruby-identifier">new</span>(
+  <span class="ruby-value">:a</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-node">%w[a b]</span>,
+  <span class="ruby-value">:b</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">2</span>
+)
+.<span class="ruby-identifier">or</span>(
+  <span class="ruby-value">:c</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-node">%i[c d]</span>,
+  <span class="ruby-value">:d</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">3</span><span class="ruby-operator">..</span><span class="ruby-value">4</span>
+)
+.<span class="ruby-identifier">and</span>(
+  <span class="ruby-value">:e</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-node">%w[e f]</span>,
+  <span class="ruby-value">:f</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">5</span><span class="ruby-operator">..</span><span class="ruby-value">6</span>
+)
+.<span class="ruby-identifier">mix</span>(
+  <span class="ruby-value">:g</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-node">%i[g h]</span>,
+  <span class="ruby-value">:h</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">7</span><span class="ruby-operator">..</span><span class="ruby-value">8</span>
+)
+
+<span class="ruby-identifier">generator</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">combination</span><span class="ruby-operator">|</span> <span class="ruby-identifier">puts</span> <span class="ruby-identifier">combination</span> }
+</pre>
+
+<p>It will populate all option combinations.</p>
+
+<h2 id="label-Docs">Docs<span><a href="#label-Docs">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p><code>OCG.new options</code> will prepare a generator. It will provide all possible option combinations.</p>
+
+<table role="table">
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>`and`</td>
+<td>provides all combinations between generators</td>
+</tr>
+<tr>
+<td>`mix`</td>
+<td>merges combinations without combining, guarantees that both left and right generator combinations will be provided at least once</td>
+</tr>
+<tr>
+<td>`or`</td>
+<td>concats generator combinations without merging</td>
+</tr>
+<tr>
+<td>`reset`</td>
+<td>allows to receive combinations once again</td>
+</tr>
+<tr>
+<td>`next`</td>
+<td>returns next combination</td>
+</tr>
+<tr>
+<td>`last`</td>
+<td>returns last combination</td>
+</tr>
+<tr>
+<td>`started?`</td>
+<td>returns true when at least one combination was generated</td>
+</tr>
+<tr>
+<td>`finished?`</td>
+<td>returns true when all combination were generated</td>
+</tr>
+<tr>
+<td>`length`</td>
+<td>returns combinations length</td>
+</tr>
+<tr>
+<td>`dup`</td>
+<td>returns generator duplicate</td>
+</tr>
+<tr>
+<td>`clone`</td>
+<td>returns generator clone</td>
+</tr>
+</tbody>
+</table>
+
+<p>Generator is responsible to any method from {<code>Enumerable</code><a href="https://ruby-doc.org/core-3.0.1/Enumerable.html">}</a>. Enumerator will be provided using generator duplicate. So enumerable api is separated from bare metal api (<code>reset</code>, <code>next</code>, <code>last</code>, <code>started?</code>, <code>finished?</code>).</p>
+
+<p>You can combine generators using <code>and</code>, <code>mix</code> and <code>or</code>.</p>
+
+<p>Options should be prepared in the following form:</p>
+
+<pre class="ruby">{
+  <span class="ruby-identifier">option_name</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">option_values</span>,
+  <span class="ruby-operator">...</span>
+}
+</pre>
+
+<p>Options hash may be empty. <code>option_name</code> can be any valid hash key. <code>option_values</code> should be convertable to array using <code>to_a</code>. <code>option_values</code> should not be empty.</p>
+
+<h2 id="label-Why-3F">Why?<span><a href="#label-Why-3F">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Many software uses multiple options and have complex relations between them. We want to test this software. We need to provide optimal option combination to maximize test coverage. The amount of combinations can be more than billion, it is not possible to store them (fuzzing testing).</p>
+
+<p>Let’s look at <a href="http://facebook.github.io/zstd/zstd_manual.html#Chapter5">zstd compressor options</a>.</p>
+
+<p><code>compressionLevel</code> option is a preset for <code>windowLog</code>, <code>hashLog</code>, etc options. We may set <code>compressionLevel</code> or other options, mixing is pointless. We can say that there are 2 option groups: group with single <code>compressionLevel</code> option and group with other options.</p>
+
+<pre class="ruby"><span class="ruby-identifier">general_generator</span> = <span class="ruby-constant">OCG</span>.<span class="ruby-identifier">new</span>(
+  <span class="ruby-value">:compressionLevel</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">-10</span><span class="ruby-operator">..</span><span class="ruby-value">10</span>
+)
+.<span class="ruby-identifier">or</span>(
+  <span class="ruby-value">:windowLog</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">10</span>,
+  <span class="ruby-value">:hashLog</span>   <span class="ruby-operator">=&gt;</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">10</span>,
+  <span class="ruby-operator">...</span>
+)
+</pre>
+
+<p><code>enableLongDistanceMatching</code> option enables usage of <code>ldmHashLog</code>, <code>ldmMinMatch</code>, etc options. We may use <code>:enableLongDistanceMatching =&gt; false</code> or <code>:enableLongDistanceMatching =&gt; true</code> with other options.</p>
+
+<pre class="ruby"><span class="ruby-identifier">ldm_generator</span> = <span class="ruby-constant">OCG</span>.<span class="ruby-identifier">new</span>(
+  <span class="ruby-value">:enableLongDistanceMatching</span> <span class="ruby-operator">=&gt;</span> [<span class="ruby-keyword">false</span>]
+)
+.<span class="ruby-identifier">or</span>(
+  <span class="ruby-value">:enableLongDistanceMatching</span> <span class="ruby-operator">=&gt;</span> [<span class="ruby-keyword">true</span>],
+  <span class="ruby-value">:ldmHashLog</span>                 <span class="ruby-operator">=&gt;</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">10</span>,
+  <span class="ruby-value">:ldmMinMatch</span>                <span class="ruby-operator">=&gt;</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">10</span>,
+  <span class="ruby-operator">...</span>
+)
+</pre>
+
+<p>General compression and long distance matching option groups correlate between each other. We want to have all possible combinations between these option groups.</p>
+
+<pre class="ruby"><span class="ruby-identifier">main_generator</span> = <span class="ruby-identifier">general_generator</span>.<span class="ruby-identifier">and</span> <span class="ruby-identifier">ldm_generator</span>
+</pre>
+
+<p><code>contentSizeFlag</code>, <code>checksumFlag</code>, <code>dictIDFlag</code> options are additional options. These options may correlate between each other but don’t correlate with main options.</p>
+
+<pre class="ruby"><span class="ruby-identifier">almost_complete_generator</span> = <span class="ruby-identifier">main_generator</span>.<span class="ruby-identifier">mix</span>(
+  <span class="ruby-value">:contentSizeFlag</span> <span class="ruby-operator">=&gt;</span> [<span class="ruby-keyword">true</span>, <span class="ruby-keyword">false</span>],
+  <span class="ruby-value">:checksumFlag</span>    <span class="ruby-operator">=&gt;</span> [<span class="ruby-keyword">true</span>, <span class="ruby-keyword">false</span>],
+  <span class="ruby-value">:dictIDFlag</span>      <span class="ruby-operator">=&gt;</span> [<span class="ruby-keyword">true</span>, <span class="ruby-keyword">false</span>]
+)
+</pre>
+
+<p><code>nbWorkers</code>, <code>jobSize</code> and <code>overlapLog</code> options are thread related options. When <code>nbWorkers</code> equals <code>0</code>, <code>jobSize</code> and <code>overlapLog</code> should not be used. These options correlate between each other but don’t correlate with main options.</p>
+
+<pre class="ruby"><span class="ruby-identifier">complete_generator</span> = <span class="ruby-identifier">almost_complete_generator</span>.<span class="ruby-identifier">mix</span>(
+  <span class="ruby-constant">OCG</span>.<span class="ruby-identifier">new</span>(
+    <span class="ruby-value">:nbWorkers</span> <span class="ruby-operator">=&gt;</span> [<span class="ruby-value">0</span>]
+  )
+  .<span class="ruby-identifier">or</span>(
+    <span class="ruby-value">:nbWorkers</span>  <span class="ruby-operator">=&gt;</span> <span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">2</span>,
+    <span class="ruby-value">:jobSize</span>    <span class="ruby-operator">=&gt;</span> <span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">10</span>,
+    <span class="ruby-value">:overlapLog</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">9</span>
+  )
+)
+</pre>
+
+<h2 id="label-CI">CI<span><a href="#label-CI">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Please visit <a href="scripts/test-images">scripts/test-images</a>. See universal test script <a href="scripts/ci_test.sh">scripts/ci_test.sh</a> for CI.</p>
+
+<h2 id="label-License">License<span><a href="#label-License">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>MIT license, see <a href="LICENSE">LICENSE</a> and <a href="AUTHORS">AUTHORS</a>.</p>
+
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.4.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

@@ -4,7 +4,11 @@
 require_relative "error"
 
 class OCG
+  # OCG::Validation module.
   module Validation
+    # Raises error when +options+ is not hash
+    #   and option values are not convertable to array
+    #   and option values are not empty.
     def self.validate_options(options)
       raise ValidateError, "invalid options hash" unless options.is_a? ::Hash
 
