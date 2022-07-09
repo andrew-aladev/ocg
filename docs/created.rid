@@ -1,15 +1,15 @@
-Thu, 30 Jun 2022 13:50:07 +0300
-lib/ocg.rb	Wed, 23 Oct 2019 15:32:33 +0300
-lib/ocg/copyable.rb	Thu, 30 Jun 2022 12:43:10 +0300
-lib/ocg/error.rb	Fri, 25 Oct 2019 13:11:14 +0300
-lib/ocg/main.rb	Thu, 30 Jun 2022 12:52:36 +0300
-lib/ocg/operator/abstract.rb	Thu, 30 Jun 2022 12:47:26 +0300
-lib/ocg/operator/and.rb	Thu, 30 Jun 2022 12:56:06 +0300
-lib/ocg/operator/mix.rb	Thu, 30 Jun 2022 12:58:04 +0300
-lib/ocg/operator/or.rb	Thu, 30 Jun 2022 12:56:16 +0300
-lib/ocg/options.rb	Thu, 30 Jun 2022 12:51:41 +0300
-lib/ocg/validation.rb	Thu, 30 Jun 2022 12:19:18 +0300
-lib/ocg/version.rb	Thu, 30 Jun 2022 12:16:58 +0300
-AUTHORS	Wed, 23 Oct 2019 15:32:33 +0300
-LICENSE	Wed, 23 Oct 2019 15:32:33 +0300
-README.md	Thu, 30 Jun 2022 13:07:18 +0300
+Sat, 09 Jul 2022 12:07:57 +0300
+lib/ocg.rb	Tue, 08 Sep 2020 12:12:50 +0300
+lib/ocg/copyable.rb	Fri, 08 Jul 2022 20:44:31 +0300
+lib/ocg/error.rb	Tue, 08 Sep 2020 12:12:50 +0300
+lib/ocg/main.rb	Fri, 08 Jul 2022 20:44:31 +0300
+lib/ocg/operator/abstract.rb	Fri, 08 Jul 2022 20:44:31 +0300
+lib/ocg/operator/and.rb	Fri, 08 Jul 2022 20:44:31 +0300
+lib/ocg/operator/mix.rb	Fri, 08 Jul 2022 20:44:31 +0300
+lib/ocg/operator/or.rb	Fri, 08 Jul 2022 20:44:31 +0300
+lib/ocg/options.rb	Fri, 08 Jul 2022 20:44:31 +0300
+lib/ocg/validation.rb	Fri, 08 Jul 2022 20:44:31 +0300
+lib/ocg/version.rb	Fri, 08 Jul 2022 20:44:31 +0300
+AUTHORS	Tue, 08 Sep 2020 12:12:50 +0300
+LICENSE	Tue, 08 Sep 2020 12:12:50 +0300
+README.md	Fri, 08 Jul 2022 20:44:31 +0300
