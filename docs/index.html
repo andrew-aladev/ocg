@@ -70,19 +70,22 @@
   <h3>Class and Module Index</h3>
 
   <ul class="link-list">
-    <li><a href="./OCG.html">OCG</a>
-    <li><a href="./OCG/BaseError.html">OCG::BaseError</a>
-    <li><a href="./OCG/Copyable.html">OCG::Copyable</a>
-    <li><a href="./OCG/NotImplementedError.html">OCG::NotImplementedError</a>
-    <li><a href="./OCG/Operator.html">OCG::Operator</a>
-    <li><a href="./OCG/Operator/AND.html">OCG::Operator::AND</a>
-    <li><a href="./OCG/Operator/Abstract.html">OCG::Operator::Abstract</a>
-    <li><a href="./OCG/Operator/MIX.html">OCG::Operator::MIX</a>
-    <li><a href="./OCG/Operator/OR.html">OCG::Operator::OR</a>
-    <li><a href="./OCG/Options.html">OCG::Options</a>
-    <li><a href="./OCG/ValidateError.html">OCG::ValidateError</a>
-    <li><a href="./OCG/Validation.html">OCG::Validation</a>
-  </ul>
+  <li><details open><summary><code><a href="./OCG.html">OCG</a></code></summary>
+  <ul class="link-list">
+  <li><code><a href="./OCG/BaseError.html">BaseError</a></code>
+  <li><code><a href="./OCG/Copyable.html">Copyable</a></code>
+  <li><code><a href="./OCG/NotImplementedError.html">NotImplementedError</a></code>
+  <li><details><summary><code><a href="./OCG/Operator.html">Operator</a></code></summary>
+  <ul class="link-list">
+  <li><code><a href="./OCG/Operator/AND.html">AND</a></code>
+  <li><code><a href="./OCG/Operator/Abstract.html">Abstract</a></code>
+  <li><code><a href="./OCG/Operator/MIX.html">MIX</a></code>
+  <li><code><a href="./OCG/Operator/OR.html">OR</a></code>
+  </ul></details>
+  <li><code><a href="./OCG/Options.html">Options</a></code>
+  <li><code><a href="./OCG/ValidateError.html">ValidateError</a></code>
+  <li><code><a href="./OCG/Validation.html">Validation</a></code>
+  </ul></details>
 </div>
 
   </div>
@@ -93,7 +96,26 @@
 
 <h1 id="label-Option+combination+generator">Option combination generator<span><a href="#label-Option+combination+generator">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
-<p>| AppVeyor | Jenkins | Github Actions | Codecov | Gem | | :——: | :—–: | :————: | :—–: | :-: | | <a href="https://ci.appveyor.com/project/andrew-aladev/ocg/branch/master"><img src="https://ci.appveyor.com/api/projects/status/github/andrew-aladev/ocg?branch=master&svg=true"></a> | <a href="http://37.187.122.190:58182/job/ocg"><img src="http://37.187.122.190:58182/buildStatus/icon?job=ocg"></a> | <a href="https://github.com/andrew-aladev/ocg/actions"><img src="https://github.com/andrew-aladev/ocg/workflows/test/badge.svg?branch=master"></a> | <a href="https://codecov.io/gh/andrew-aladev/ocg"><img src="https://codecov.io/gh/andrew-aladev/ocg/branch/master/graph/badge.svg"></a> | <a href="https://rubygems.org/gems/ocg"><img src="https://img.shields.io/gem/v/ocg.svg"></a> |</p>
+<table role="table">
+<thead>
+<tr>
+<th align="center">AppVeyor</th>
+<th align="center">Jenkins</th>
+<th align="center">Github Actions</th>
+<th align="center">Codecov</th>
+<th align="center">Gem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">[![AppVeyor test status](<a href="https://ci.appveyor.com/api/projects/status/github/andrew-aladev/ocg?branch=master&amp;svg=true)](https://ci.appveyor.com/project/andrew-aladev/ocg/branch/master">ci.appveyor.com/api/projects/status/github/andrew-aladev/ocg?branch=master&amp;svg=true)](https://ci.appveyor.com/project/andrew-aladev/ocg/branch/master</a>)</td>
+<td align="center">[![Jenkins test status](<a href="http://37.187.122.190:58182/buildStatus/icon?job=ocg)](http://37.187.122.190:58182/job/ocg">37.187.122.190:58182/buildStatus/icon?job=ocg)](http://37.187.122.190:58182/job/ocg</a>)</td>
+<td align="center">[![Github Actions test status](<a href="https://github.com/andrew-aladev/ocg/workflows/test/badge.svg?branch=master)](https://github.com/andrew-aladev/ocg/actions">github.com/andrew-aladev/ocg/workflows/test/badge.svg?branch=master)](https://github.com/andrew-aladev/ocg/actions</a>)</td>
+<td align="center">[![Codecov](<a href="https://codecov.io/gh/andrew-aladev/ocg/branch/master/graph/badge.svg)](https://codecov.io/gh/andrew-aladev/ocg">codecov.io/gh/andrew-aladev/ocg/branch/master/graph/badge.svg)](https://codecov.io/gh/andrew-aladev/ocg</a>)</td>
+<td align="center">[![Gem](<a href="https://img.shields.io/gem/v/ocg.svg)](https://rubygems.org/gems/ocg">img.shields.io/gem/v/ocg.svg)](https://rubygems.org/gems/ocg</a>)</td>
+</tr>
+</tbody>
+</table>
 
 <h2 id="label-Installation">Installation<span><a href="#label-Installation">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
@@ -150,47 +172,47 @@ gem install pkg/ocg-*.gem</pre>
 </thead>
 <tbody>
 <tr>
-<td>`and`</td>
+<td>‘and`</td>
 <td>provides all combinations between generators</td>
 </tr>
 <tr>
-<td>`mix`</td>
+<td>‘mix`</td>
 <td>merges combinations without combining, guarantees that both left and right generator combinations will be provided at least once</td>
 </tr>
 <tr>
-<td>`or`</td>
+<td>‘or`</td>
 <td>concats generator combinations without merging</td>
 </tr>
 <tr>
-<td>`reset`</td>
+<td>‘reset`</td>
 <td>allows to receive combinations once again</td>
 </tr>
 <tr>
-<td>`next`</td>
+<td>‘next`</td>
 <td>returns next combination</td>
 </tr>
 <tr>
-<td>`last`</td>
+<td>‘last`</td>
 <td>returns last combination</td>
 </tr>
 <tr>
-<td>`started?`</td>
+<td>‘started?`</td>
 <td>returns true when at least one combination was generated</td>
 </tr>
 <tr>
-<td>`finished?`</td>
+<td>‘finished?`</td>
 <td>returns true when all combination were generated</td>
 </tr>
 <tr>
-<td>`length`</td>
+<td>‘length`</td>
 <td>returns combinations length</td>
 </tr>
 <tr>
-<td>`dup`</td>
+<td>‘dup`</td>
 <td>returns generator duplicate</td>
 </tr>
 <tr>
-<td>`clone`</td>
+<td>‘clone`</td>
 <td>returns generator clone</td>
 </tr>
 </tbody>
@@ -282,7 +304,7 @@ gem install pkg/ocg-*.gem</pre>
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.4.0.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.5.0.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 
