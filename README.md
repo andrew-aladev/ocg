@@ -1,8 +1,8 @@
 # Option combination generator
 
-| AppVeyor | Jenkins | Github Actions | Codecov | Gem |
-| :------: | :-----: | :------------: | :-----: | :-: |
-| [![AppVeyor test status](https://ci.appveyor.com/api/projects/status/github/andrew-aladev/ocg?branch=master&svg=true)](https://ci.appveyor.com/project/andrew-aladev/ocg/branch/master) | [![Jenkins test status](http://37.187.122.190:58182/buildStatus/icon?job=ocg)](http://37.187.122.190:58182/job/ocg) | [![Github Actions test status](https://github.com/andrew-aladev/ocg/workflows/test/badge.svg?branch=master)](https://github.com/andrew-aladev/ocg/actions) | [![Codecov](https://codecov.io/gh/andrew-aladev/ocg/branch/master/graph/badge.svg)](https://codecov.io/gh/andrew-aladev/ocg) | [![Gem](https://img.shields.io/gem/v/ocg.svg)](https://rubygems.org/gems/ocg) |
+| Github Actions | Codecov | Gem |
+| :------------: | :-----: | :-: |
+| [![Github Actions test status](https://github.com/andrew-aladev/ocg/workflows/test/badge.svg?branch=master)](https://github.com/andrew-aladev/ocg/actions) | [![Codecov](https://codecov.io/gh/andrew-aladev/ocg/branch/master/graph/badge.svg)](https://codecov.io/gh/andrew-aladev/ocg) | [![Gem](https://img.shields.io/gem/v/ocg.svg)](https://rubygems.org/gems/ocg) |
 
 ## Installation
 

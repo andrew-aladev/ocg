@@ -1,4 +1,4 @@
-Sun, 29 Jan 2023 13:45:04 +0300
+Mon, 27 Mar 2023 01:55:15 +0300
 lib/ocg.rb	Wed, 23 Oct 2019 00:57:26 +0300
 lib/ocg/copyable.rb	Sun, 09 Oct 2022 12:44:02 +0300
 lib/ocg/error.rb	Thu, 24 Oct 2019 23:58:48 +0300
@@ -12,4 +12,4 @@ lib/ocg/validation.rb	Sun, 09 Oct 2022 12:44:02 +0300
 lib/ocg/version.rb	Sun, 09 Oct 2022 12:44:02 +0300
 AUTHORS	Tue, 22 Oct 2019 22:47:15 +0300
 LICENSE	Tue, 22 Oct 2019 22:47:15 +0300
-README.md	Sun, 09 Oct 2022 12:44:02 +0300
+README.md	Mon, 27 Mar 2023 01:55:11 +0300
